@@ -2,31 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 img {
   pointer-events: none;
 }
@@ -36,4 +11,22 @@ img {
   -moz-user-select: none; /* Firefox 2+ */
   -ms-user-select: none; /* IE 10+ */
   user-select: none; /* Standard syntax */
+}
+
+div {
+  border-radius: 4px;
+}
+
+.answerOption,
+.action-button,
+.illustration {
+  width: 10vw;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #ecf0f1;
+}
+
+.answerOption {
+  display: inline-block;
+  margin: 10px;
 }
