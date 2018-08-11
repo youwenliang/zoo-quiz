@@ -10,7 +10,8 @@ class Quiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questionId: 0,
+      questionCount: 0,
+      questionId: -1,
       question: '',
       answerOptions: [],
       answer: -1,
@@ -26,6 +27,7 @@ class Quiz extends Component {
     })
 
     this.setState({
+      questionId: quizQuestionsShuffled[0].questionId,
       question: quizQuestionsShuffled[0].question,
       answerOptions,
       answer,   
@@ -33,11 +35,8 @@ class Quiz extends Component {
   }
 
   handleAnswerSelected(index) {
-    if (!this.state.answerRevealed && index === this.state.answer) {
-      this.props.addScore();
-    }
-    
     if (!this.state.answerRevealed) {
+      this.props.setPlayerAnswers(this.state.questionId, index === this.state.answer);
       this.setState({
         answerSelected: index,
         answerRevealed: true
@@ -46,15 +45,16 @@ class Quiz extends Component {
   }
 
   setNextQuestion() {
-    let questionId = this.state.questionId + 1;
-    let answerOptions = shuffleArray(quizQuestionsShuffled[questionId].answers);
+    let questionCount = this.state.questionCount + 1;
+    let answerOptions = shuffleArray(quizQuestionsShuffled[questionCount].answers);
     let answer = answerOptions.findIndex(e => {
       return e.isCorrect;
     })
 
     this.setState({
-        questionId: questionId,
-        question: quizQuestionsShuffled[questionId].question,
+        questionCount: questionCount,
+        questionId: quizQuestionsShuffled[questionCount].questionId,
+        question: quizQuestionsShuffled[questionCount].question,
         answerOptions: answerOptions,
         answer: answer,
         answerRevealed: false
@@ -64,7 +64,7 @@ class Quiz extends Component {
   render() {
     let nextStep;
     if (this.state.answerRevealed) {
-      if (this.state.questionId === quizQuestionsShuffled.length-1) {
+      if (this.state.questionCount === quizQuestionsShuffled.length-1) {
         nextStep = <div className="action-button" onClick={() => this.props.switchView('result')}>看結果！</div>
       } else {
         nextStep = <div className="action-button" onClick={this.setNextQuestion.bind(this)}>下一題！</div>
@@ -74,6 +74,7 @@ class Quiz extends Component {
     return (
       <div className="quiz">
         <Question
+          questionCount={this.state.questionCount}
           questionId={this.state.questionId}
           questionContent={this.state.question}
           answerOptions={this.state.answerOptions}
@@ -93,7 +94,7 @@ class Question extends Component {
     return (
       <div className="question">
         <div className="questionCount">
-          <h1>Q{this.props.questionId+1}</h1>
+          <h1>Q{this.props.questionCount+1}</h1>
         </div>
         <div className="questionContent">
           {this.props.questionContent}

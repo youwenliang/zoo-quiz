@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
+import Result from './Result';
 import './App.css';
 
 class App extends Component {
@@ -7,26 +8,38 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'start',
-      score: 0
+      score: 0,
+      playerAnswers: []
     }
   }
 
-  addScore() {
-    let score = this.state.score+1;
+  setPlayerAnswers(questionId, isPlayerAnswerCorrect) {
+    let score = this.state.score;
+    let playerAnswers = this.state.playerAnswers;
+    if (isPlayerAnswerCorrect) {
+      score++;
+    }
+    playerAnswers.push({
+      questionId: questionId,
+      isPlayerAnswerCorrect: isPlayerAnswerCorrect
+    });
+
     this.setState({
-      score: score
-    })
+      score: score,
+      playerAnswers: playerAnswers
+    });
   }
 
-  resetScore() {
+  resetPlayerAnswers() {
     this.setState({
-      score: 0
+      score: 0,
+      playerAnswers: []
     });
   }
 
   switchView = (view) => {
     if (view === 'start') {
-      this.resetScore();
+      this.resetPlayerAnswers();
     }
 
     this.setState({
@@ -38,8 +51,8 @@ class App extends Component {
     const viewContainerMapping = {
       'start': <Start view={this.state.view} switchView={this.switchView.bind(this)} />,
       'intro': <Intro view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'quiz': <Quiz view={this.state.view} switchView={this.switchView.bind(this)} score={this.state.score} addScore={this.addScore.bind(this)} />,
-      'result': <Result view={this.state.view} switchView={this.switchView.bind(this)} score={this.state.score} />,
+      'quiz': <Quiz view={this.state.view} switchView={this.switchView.bind(this)} score={this.state.score} setPlayerAnswers={this.setPlayerAnswers.bind(this)} />,
+      'result': <Result view={this.state.view} switchView={this.switchView.bind(this)} score={this.state.score} playerAnswers={this.state.playerAnswers} />,
     }
     let container = viewContainerMapping[this.state.view];
 
@@ -68,18 +81,6 @@ class Intro extends Component {
       <div className="intro">
         <h1>題目介紹 A_____A</h1>
         <div className="action-button" onClick={() => this.props.switchView('quiz')}>開始玩！</div>
-      </div>
-    );
-  }
-}
-
-class Result extends Component {
-  render() {
-    return (
-      <div className="result">
-        <h1>結果</h1>
-        <p>{this.props.score}</p>
-        <div className="action-button" onClick={() => this.props.switchView('start')}>重新玩！</div>
       </div>
     );
   }
