@@ -4,7 +4,7 @@ import quizQuestions from './quiz-questions';
 const shuffleArray = (array) => {
   return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
 };
-const quizQuestionsShuffled = shuffleArray(quizQuestions);
+let quizQuestionsShuffled;
 
 class Quiz extends Component {
   constructor(props) {
@@ -21,6 +21,8 @@ class Quiz extends Component {
   }
 
   componentWillMount() {
+    quizQuestionsShuffled = shuffleArray(quizQuestions[this.props.toggleQuestionSets]);
+
     let answerOptions = shuffleArray(quizQuestionsShuffled[0].answers);
     let answer = answerOptions.findIndex(e => {
       return e.isCorrect;
