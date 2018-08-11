@@ -52,11 +52,11 @@ class Quiz extends Component {
     })
 
     this.setState({
-        questionCount: questionCount,
+        questionCount,
         questionId: quizQuestionsShuffled[questionCount].questionId,
         question: quizQuestionsShuffled[questionCount].question,
-        answerOptions: answerOptions,
-        answer: answer,
+        answerOptions,
+        answer,
         answerRevealed: false
     });
   }
@@ -89,84 +89,77 @@ class Quiz extends Component {
   }
 }
 
-class Question extends Component {
-  render() {
-    return (
-      <div className="question">
-        <div className="questionCount">
-          <h1>Q{this.props.questionCount+1}</h1>
-        </div>
-        <div className="questionContent">
-          {this.props.questionContent}
-        </div>
-        <div className="answerOptions">
-          {this.props.answerOptions.map((answerOption, index) => {
-            return (
-              <AnswerOption
-                key={index}
-                answerIndex={index}
-                answerOptionContent={answerOption.content}
-                answer={this.props.answer}
-                answerSelected={this.props.answerSelected}
-                answerRevealed={this.props.answerRevealed}
-                onAnswerSelected={this.props.onAnswerSelected.bind(this)}
-              />
-            );
-          })}
-        </div>
-        <Illustration
-          answer={this.props.answer}
-          answerSelected={this.props.answerSelected}
-          answerRevealed={this.props.answerRevealed}
-        />
+function Question(props) {
+  return (
+    <div className="question">
+      <div className="question-count">
+        <h1>Q{props.questionCount+1}</h1>
       </div>
-    );
-  }
+      <div className="question-content">
+        {props.questionContent}
+      </div>
+      <div className="answer-options">
+        {props.answerOptions.map((answerOption, index) => {
+          return (
+            <AnswerOption
+              key={index}
+              answerIndex={index}
+              answerOptionContent={answerOption.content}
+              answer={props.answer}
+              answerSelected={props.answerSelected}
+              answerRevealed={props.answerRevealed}
+              onAnswerSelected={props.onAnswerSelected.bind(this)}
+            />
+          );
+        })}
+      </div>
+      <Illustration
+        answer={props.answer}
+        answerSelected={props.answerSelected}
+        answerRevealed={props.answerRevealed}
+      />
+    </div>
+  );
 }
 
-class AnswerOption extends Component {
-  handleClick() {
-    this.props.onAnswerSelected(this.props.answerIndex);
+function AnswerOption(props) {
+  function handleClick() {
+    props.onAnswerSelected(props.answerIndex);
   }
 
-  render() {
-    let content = '';
-
-    if (this.props.answerRevealed) {
-      if (this.props.answerIndex === this.props.answer) {
-        content = ' [這個對]';
-      } else if (this.props.answerIndex === this.props.answerSelected){
-        content = ' [錯拉幹]';
-      }
+  let content = '';
+  if (props.answerRevealed) {
+    if (props.answerIndex === props.answer) {
+      content = ' [這個對]';
+    } else if (props.answerIndex === props.answerSelected){
+      content = ' [錯拉幹]';
     }
-
-    return (
-      <div className="answerOption" key="{this.props.answerIndex}" onClick={this.handleClick.bind(this)}>
-        {this.props.answerOptionContent}{content}
-      </div>
-    );
   }
+
+  return (
+    <div className="answer-option" onClick={handleClick}>
+      {props.answerOptionContent}{content}
+    </div>
+  );
 }
 
-class Illustration extends Component {
-  render() {
-    let illustrationContent;
-    if (this.props.answerRevealed) {
-      if (this.props.answerSelected === this.props.answer) {
-        illustrationContent = '插圖 [成功拉]';
-      } else {
-        illustrationContent = '插圖 [失敗拉]'
-      }
+function Illustration(props) {
+  let illustrationContent;
+  if (props.answerRevealed) {
+    if (props.answerSelected === props.answer) {
+      illustrationContent = '插圖 [成功拉]';
     } else {
-      illustrationContent = '插圖 [？？？]';
+      illustrationContent = '插圖 [失敗拉]'
     }
-    
-    return (
-      <div className="illustration">
-        {illustrationContent}
-      </div>
-    );
+  } else {
+    illustrationContent = '插圖 [？？？]';
   }
+  
+  return (
+    <div className="illustration">
+      {illustrationContent}
+    </div>
+  );
 }
 
 export default Quiz;

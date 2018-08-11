@@ -8,16 +8,17 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'start',
-      score: 0,
+      playerScore: 0,
       playerAnswers: []
     }
   }
 
   setPlayerAnswers(questionId, isPlayerAnswerCorrect) {
-    let score = this.state.score;
+    let playerScore = this.state.playerScore;
     let playerAnswers = this.state.playerAnswers;
+
     if (isPlayerAnswerCorrect) {
-      score++;
+      playerScore++;
     }
     playerAnswers.push({
       questionId: questionId,
@@ -25,14 +26,14 @@ class App extends Component {
     });
 
     this.setState({
-      score: score,
-      playerAnswers: playerAnswers
+      playerScore,
+      playerAnswers
     });
   }
 
   resetPlayerAnswers() {
     this.setState({
-      score: 0,
+      playerScore: 0,
       playerAnswers: []
     });
   }
@@ -51,8 +52,8 @@ class App extends Component {
     const viewContainerMapping = {
       'start': <Start view={this.state.view} switchView={this.switchView.bind(this)} />,
       'intro': <Intro view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'quiz': <Quiz view={this.state.view} switchView={this.switchView.bind(this)} score={this.state.score} setPlayerAnswers={this.setPlayerAnswers.bind(this)} />,
-      'result': <Result view={this.state.view} switchView={this.switchView.bind(this)} score={this.state.score} playerAnswers={this.state.playerAnswers} />,
+      'quiz': <Quiz view={this.state.view} switchView={this.switchView.bind(this)} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers.bind(this)} />,
+      'result': <Result view={this.state.view} switchView={this.switchView.bind(this)} playerScore={this.state.playerScore} playerAnswers={this.state.playerAnswers} />,
     }
     let container = viewContainerMapping[this.state.view];
 
