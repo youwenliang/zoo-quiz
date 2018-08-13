@@ -116,6 +116,7 @@ function Question(props) {
         })}
       </div>
       <Illustration
+        questionId={props.questionId}
         answer={props.answer}
         answerSelected={props.answerSelected}
         answerRevealed={props.answerRevealed}
@@ -146,20 +147,20 @@ function AnswerOption(props) {
 }
 
 function Illustration(props) {
-  let illustrationContent;
+  let illustrationSourcePath = process.env.PUBLIC_URL + "/img/illustrations/q" + props.questionId + "/";
   if (props.answerRevealed) {
     if (props.answerSelected === props.answer) {
-      illustrationContent = '插圖 [成功拉]';
+      illustrationSourcePath = illustrationSourcePath + "illustration-success.png";
     } else {
-      illustrationContent = '插圖 [失敗拉]'
+      illustrationSourcePath = illustrationSourcePath + "illustration-failure.png";
     }
   } else {
-    illustrationContent = '插圖 [？？？]';
+    illustrationSourcePath = illustrationSourcePath + "illustration.png";
   }
   
   return (
     <div className="illustration">
-      {illustrationContent}
+      <img src={illustrationSourcePath} />
     </div>
   );
 }
