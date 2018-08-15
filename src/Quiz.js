@@ -19,6 +19,9 @@ class Quiz extends Component {
       answerRevealed: false
     }
   }
+  componentDidMount () {
+    console.log("quiz");
+  }
 
   componentWillMount() {
     quizQuestionsShuffled = shuffleArray(quizQuestions[this.props.toggleQuestionSets]);

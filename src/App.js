@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Quiz from './Quiz';
 import Result from './Result';
 import './App.css';
+import {TweenMax} from "gsap/all";
 
 class App extends Component {
   constructor(props) {
@@ -68,6 +69,9 @@ class App extends Component {
 }
 
 class Start extends Component {
+  componentDidMount () {
+    console.log("start");
+  }
   render() {
     return (
       <div className="start">
@@ -79,6 +83,9 @@ class Start extends Component {
 }
 
 class Intro extends Component {
+  componentDidMount () {
+    console.log("intro");
+  }
   render() {
     return (
       <div className="intro">

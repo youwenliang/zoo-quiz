@@ -19,7 +19,8 @@ div {
 
 .answer-option,
 .action-button {
-  width: 10vw;
+  width: 40vh;
+  height: 10vh;
   margin: 10px auto;
   padding: 10px;
   background-color: #ecf0f1;

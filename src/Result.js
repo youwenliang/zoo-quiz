@@ -1,28 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Result(props) {
-  return (
-    <div className="result">
-      <h1>結果</h1>
-      <div className="result-score">
-        {props.playerScore}
+class Result extends Component {
+  componentDidMount () {
+    console.log("result");
+  }
+  render() {
+    return (
+      <div className="result">
+        <h1>結果</h1>
+        <div className="result-score">
+          {this.props.playerScore}
+        </div>
+        <div className="result-details">
+          {this.props.playerAnswers.map((playerAnswer, index) => {
+            return (
+              <PlayerAnswer
+                key={index}
+                questionId={playerAnswer.questionId}
+                isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
+              />
+            );
+          })}
+        </div>
+        <div className="action-button" onClick={() => this.props.switchView('start')}>
+          重新玩！
+        </div>
       </div>
-      <div className="result-details">
-        {props.playerAnswers.map((playerAnswer, index) => {
-          return (
-            <PlayerAnswer
-              key={index}
-              questionId={playerAnswer.questionId}
-              isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
-            />
-          );
-        })}
-      </div>
-      <div className="action-button" onClick={() => props.switchView('start')}>
-        重新玩！
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 function PlayerAnswer(props) {
