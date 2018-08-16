@@ -5,6 +5,7 @@ const shuffleArray = (array) => {
   return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
 };
 let quizQuestionsShuffled;
+let illustrationOrder;
 
 class Quiz extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Quiz extends Component {
 
   componentWillMount() {
     quizQuestionsShuffled = shuffleArray(quizQuestions[this.props.toggleQuestionSets]);
+    illustrationOrder = shuffleArray([1,2,3,4,5]);
 
     let answerOptions = shuffleArray(quizQuestionsShuffled[0].answers);
     let answer = answerOptions.findIndex(e => {
@@ -116,7 +118,7 @@ function Question(props) {
         })}
       </div>
       <Illustration
-        questionId={props.questionId}
+        questionCount={props.questionCount}
         answer={props.answer}
         answerSelected={props.answerSelected}
         answerRevealed={props.answerRevealed}
@@ -147,20 +149,20 @@ function AnswerOption(props) {
 }
 
 function Illustration(props) {
-  let illustrationSourcePath = process.env.PUBLIC_URL + "/img/illustrations/q" + props.questionId + "/";
+  let illustrationSourcePath = process.env.PUBLIC_URL + "/img/illustrations/" + illustrationOrder[props.questionCount] + "/";
   if (props.answerRevealed) {
     if (props.answerSelected === props.answer) {
-      illustrationSourcePath = illustrationSourcePath + "illustration-success.png";
+      illustrationSourcePath = illustrationSourcePath + "illustration-success.svg";
     } else {
-      illustrationSourcePath = illustrationSourcePath + "illustration-failure.png";
+      illustrationSourcePath = illustrationSourcePath + "illustration-failure.svg";
     }
   } else {
-    illustrationSourcePath = illustrationSourcePath + "illustration.png";
+    illustrationSourcePath = illustrationSourcePath + "illustration.svg";
   }
   
   return (
     <div className="illustration">
-      <img src={illustrationSourcePath} />
+      <object data={illustrationSourcePath} type="image/svg+xml" />
     </div>
   );
 }
