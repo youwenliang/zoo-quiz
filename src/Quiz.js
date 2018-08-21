@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import quizQuestions from './quiz-questions';
+import svgImages from './svg-import.js';
 
 const shuffleArray = (array) => {
   return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
@@ -149,20 +150,22 @@ function AnswerOption(props) {
 }
 
 function Illustration(props) {
-  let illustrationSourcePath = process.env.PUBLIC_URL + "/img/illustrations/" + illustrationOrder[props.questionCount] + "/";
+  let questionStatus;
   if (props.answerRevealed) {
     if (props.answerSelected === props.answer) {
-      illustrationSourcePath = illustrationSourcePath + "illustration-success.svg";
+      questionStatus = "illustration-success.svg";
     } else {
-      illustrationSourcePath = illustrationSourcePath + "illustration-failure.svg";
+      questionStatus = "illustration-failure.svg";
     }
   } else {
-    illustrationSourcePath = illustrationSourcePath + "illustration.svg";
+    questionStatus = "illustration.svg";
   }
+
+  let illustrationSourcePath = "illustrations/" + illustrationOrder[props.questionCount] + "/" + questionStatus;
   
   return (
     <div className="illustration">
-      <object data={illustrationSourcePath} type="image/svg+xml" />
+      <object data={svgImages[illustrationSourcePath]} type="image/svg+xml"> </object>
     </div>
   );
 }

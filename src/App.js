@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
 import Result from './Result';
+import svgImages from './svg-import.js';
 import './App.css';
 
 class App extends Component {
@@ -71,8 +72,17 @@ class Start extends Component {
   render() {
     return (
       <div className="start">
-        <h1>野外調查大冒險 A_____A</h1>
-        <div className="action-button" onClick={() => this.props.switchView('intro')}>看介紹！</div>
+        <object className="svg svg-start-background" data={svgImages['start/background.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-branch" data={svgImages['start/branch.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-logo" data={svgImages['start/logo.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-title" data={svgImages['start/title.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-bat" data={svgImages['start/bat.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-bird" data={svgImages['start/bird.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-cat" data={svgImages['start/cat.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-grass" data={svgImages['start/grass.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-mouse" data={svgImages['start/mouse.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-lizard" data={svgImages['start/lizard.svg']} type="image/svg+xml"> </object>
+        <div className="start-btn" onClick={() => this.props.switchView('intro')}>START!</div>
       </div>
     );
   }

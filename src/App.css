@@ -1,5 +1,23 @@
+@font-face {
+  font-family: 'Gen Jyuu Gothic X';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/GenJyuuGothicX-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gen Jyuu Gothic X';
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/GenJyuuGothicX-Bold.ttf) format('truetype');
+}
+
 .App {
   text-align: center;
+  width: 1080px;
+  height: 1920px;
+  position: relative;
+  font-family: 'Gen Jyuu Gothic X';
 }
 
 img {
@@ -13,8 +31,8 @@ img {
   user-select: none; /* Standard syntax */
 }
 
-div {
-  border-radius: 4px;
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 
 .answer-option,
@@ -28,4 +46,47 @@ div {
 .answer-option {
   display: inline-block;
   margin: 10px;
+}
+
+.svg {
+  position: absolute;
+}
+
+/* start page */
+.svg-start-background { width: 100%; left: 0; top: 0; }
+.svg-start-branch { width: 100%; left: 0; top: 0; }
+.svg-start-logo { width: 274px; left: 402px; top: 96px; }
+.svg-start-title { width: 882px; left: 78px; top: 438px; }
+.svg-start-bat { width: 106px; right: 120px; top: 88px; }
+.svg-start-bird { width: 328px; left: 84px; bottom: 38px; }
+.svg-start-cat { width: 254px; right: 180px; bottom: 138px; }
+.svg-start-grass { width: 100%; left: 0; bottom: 0; }
+.svg-start-mouse { width: 192px; left: 0; bottom: 0; }
+.svg-start-lizard { width: 220px; right: 0; bottom: 0; }
+
+.start-btn {
+  color: #FFF;
+  line-height: 260px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  width: 492px;
+  height: 260px;
+  position: absolute;
+  left: 292px;
+  top: 900px;
+  background-color: #EF8519;
+  border-radius: 108px;
+  font-size: 108px;
+  font-family: 'Gen Jyuu Gothic X';
+}
+
+.start-btn:before {
+  content: '';
+  width: 546px;
+  height: 294px;
+  position: absolute;
+  left: -24px;
+  bottom: -10px;
+  border: 15px solid #AC5508;
+  border-radius: 132px;
 }
