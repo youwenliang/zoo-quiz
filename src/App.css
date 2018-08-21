@@ -13,7 +13,6 @@
 }
 
 .App {
-  text-align: center;
   width: 1080px;
   height: 1920px;
   position: relative;
@@ -33,19 +32,6 @@ img {
 
 *, *:before, *:after {
   box-sizing: border-box;
-}
-
-.answer-option,
-.action-button {
-  width: 10vw;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: #ecf0f1;
-}
-
-.answer-option {
-  display: inline-block;
-  margin: 10px;
 }
 
 .svg {
@@ -152,3 +138,106 @@ img {
 
 .svg-intro-avatar { width: 326px; right: 150px; bottom: 0; }
 .svg-intro-dialog { width: 130px; left: 104px; bottom: 272px; }
+
+/* quiz page */
+
+.question-wrapper {
+  display: flex;
+  width: 80%;
+  margin: 180px auto 60px;
+}
+
+.question-count {
+  font-size: 108px;
+  font-weight: 900;
+  color: #7EBC25;
+  width: 200px;
+}
+
+.question-content {
+  font-size: 48px;
+  color: #1A1A1A;
+  margin-left: 48px;
+  padding-top: 12px;
+}
+
+.answer-options {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.answer-option {
+  text-align: center;
+  display: table;
+  width: 212px;
+  height: 212px;
+  color: #488A1F;
+  border: 6px solid #3E7C18;
+  border-radius: 50%;
+  position: relative;
+  font-size: 36px;
+}
+
+.answer-option p {
+  display: table-cell;
+  vertical-align: middle;
+  word-break: keep-all;
+}
+
+.answer-option.correct {
+  /* check icon */
+}
+
+.answer-option.incorrect {
+  /* cross icon */
+}
+
+.answer-option:before {
+  content: '';
+  width: 212px;
+  height: 212px;
+  transform: scale(.9);
+  transform-origin: left bottom;
+  display: block;
+  background-color: #CDDC4C;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.illustration {
+  margin: 60px auto;
+}
+
+.action-btn {  
+  width: 360px;
+  height: 180px;
+  position: relative;
+  margin: 0 auto;
+  border: 8px solid #AC5508;
+  border-radius: 84px;
+  color: #FFF;
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 180px;
+  letter-spacing: .05em;
+  text-align: center;
+}
+
+.action-btn:before {
+  content: '';
+  width: 360px;
+  height: 180px;
+  border-radius: 80px;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  z-index: -1;
+  transform: scaleX(.93) scaleY(.89);
+  transform-origin: left bottom;
+  background-color: #EF8519;
+}

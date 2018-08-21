@@ -70,9 +70,9 @@ class Quiz extends Component {
     let nextStep;
     if (this.state.answerRevealed) {
       if (this.state.questionCount === quizQuestionsShuffled.length-1) {
-        nextStep = <div className="action-button" onClick={() => this.props.switchView('result')}>看結果！</div>
+        nextStep = <div className="action-btn" onClick={() => this.props.switchView('result')}>看結果！</div>
       } else {
-        nextStep = <div className="action-button" onClick={this.setNextQuestion.bind(this)}>下一題！</div>
+        nextStep = <div className="action-btn" onClick={this.setNextQuestion.bind(this)}>下一題！</div>
       }
     }
 
@@ -97,11 +97,13 @@ class Quiz extends Component {
 function Question(props) {
   return (
     <div className="question">
-      <div className="question-count">
-        <h1>Q{props.questionCount+1}</h1>
-      </div>
-      <div className="question-content">
-        {props.questionContent}
+      <div className="question-wrapper">
+        <div className="question-count">
+          Q{props.questionCount+1}
+        </div>
+        <div className="question-content">
+          {props.questionContent}
+        </div>
       </div>
       <div className="answer-options">
         {props.answerOptions.map((answerOption, index) => {
@@ -133,18 +135,20 @@ function AnswerOption(props) {
     props.onAnswerSelected(props.answerIndex);
   }
 
-  let content = '';
+  let answerStatus = '';
   if (props.answerRevealed) {
     if (props.answerIndex === props.answer) {
-      content = ' [這個對]';
+      answerStatus = 'correct';
     } else if (props.answerIndex === props.answerSelected){
-      content = ' [錯拉幹]';
+      answerStatus = 'incorrect';
     }
   }
 
   return (
-    <div className="answer-option" onClick={handleClick}>
-      {props.answerOptionContent}{content}
+    <div className={"answer-option " + answerStatus} onClick={handleClick}>
+      <p>
+        {props.answerOptionContent}
+      </p>
     </div>
   );
 }
