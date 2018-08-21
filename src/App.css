@@ -34,6 +34,37 @@ img {
   box-sizing: border-box;
 }
 
+/* general */
+
+.action-btn {  
+  width: 360px;
+  height: 180px;
+  position: relative;
+  margin: 0 auto;
+  border: 8px solid #AC5508;
+  border-radius: 84px;
+  color: #FFF;
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 180px;
+  letter-spacing: .05em;
+  text-align: center;
+}
+
+.action-btn:before {
+  content: '';
+  width: 360px;
+  height: 180px;
+  border-radius: 80px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transform: scaleX(.93) scaleY(.88);
+  transform-origin: left bottom;
+  background-color: #EF8519;
+}
+
 .svg {
   position: absolute;
 }
@@ -51,30 +82,10 @@ img {
 .svg-start-lizard { width: 220px; right: 0; bottom: 0; }
 
 .start-btn {
-  color: #FFF;
-  line-height: 260px;
-  font-weight: 900;
-  letter-spacing: .05em;
-  width: 492px;
-  height: 260px;
   position: absolute;
-  left: 292px;
+  left: 50%;
   top: 900px;
-  background-color: #EF8519;
-  border-radius: 108px;
-  font-size: 108px;
-  font-family: 'Gen Jyuu Gothic X';
-}
-
-.start-btn:before {
-  content: '';
-  width: 546px;
-  height: 294px;
-  position: absolute;
-  left: -24px;
-  bottom: -10px;
-  border: 10px solid #AC5508;
-  border-radius: 132px;
+  transform: scale(1.4) translateX(-35.7%);
 }
 
 /* intro page */
@@ -96,6 +107,7 @@ img {
 }
 
 .intro-title {
+  text-align: center;
   font-weight: 900;
   font-size: 60px;
   color: #3E7C18;
@@ -104,6 +116,7 @@ img {
 }
 
 .intro-description {
+  text-align: center;
   width: 70%;
   font-size: 32px;
   color: #1A1A1A;
@@ -111,29 +124,8 @@ img {
 }
 
 .intro-btn {
-  color: #FFF;
-  line-height: 146px;
-  font-weight: 900;
-  letter-spacing: .05em;
-  width: 276px;
-  height: 146px;
-  margin: 40px auto 0;
-  position: relative;
-  background-color: #EF8519;
-  border-radius: 60px;
-  font-size: 60px;
-  font-family: 'Gen Jyuu Gothic X';
-}
-
-.intro-btn:before {
-  content: '';
-  width: 306px;
-  height: 164px;
-  position: absolute;
-  left: -12px;
-  bottom: -4px;
-  border: 8px solid #AC5508;
-  border-radius: 72px;
+  transform: scale(.92);
+  margin: 48px auto;
 }
 
 .svg-intro-avatar { width: 326px; right: 150px; bottom: 0; }
@@ -211,33 +203,4 @@ img {
 
 .illustration {
   margin: 60px auto;
-}
-
-.action-btn {  
-  width: 360px;
-  height: 180px;
-  position: relative;
-  margin: 0 auto;
-  border: 8px solid #AC5508;
-  border-radius: 84px;
-  color: #FFF;
-  font-size: 60px;
-  font-weight: 900;
-  line-height: 180px;
-  letter-spacing: .05em;
-  text-align: center;
-}
-
-.action-btn:before {
-  content: '';
-  width: 360px;
-  height: 180px;
-  border-radius: 80px;
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  z-index: -1;
-  transform: scaleX(.93) scaleY(.89);
-  transform-origin: left bottom;
-  background-color: #EF8519;
 }

@@ -82,7 +82,7 @@ class Start extends Component {
         <object className="svg svg-start-grass" data={svgImages['start/grass.svg']} type="image/svg+xml"> </object>
         <object className="svg svg-start-mouse" data={svgImages['start/mouse.svg']} type="image/svg+xml"> </object>
         <object className="svg svg-start-lizard" data={svgImages['start/lizard.svg']} type="image/svg+xml"> </object>
-        <div className="start-btn" onClick={() => this.props.switchView('intro')}>START!</div>
+        <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')}>開始！</div>
       </div>
     );
   }
@@ -93,9 +93,9 @@ class Intro extends Component {
     return (
       <div className="intro">
         <div className="intro-container">
-          <div className="intro-title">Baited hang</div>
-          <div className="intro-description">By the third day, Mechalle Bro solved into firm resolve,</div>
-          <div className="intro-btn" onClick={() => this.props.switchView('quiz')}>START!</div>
+          <div className="intro-title">遊戲介紹標題</div>
+          <div className="intro-description">遊戲內容簡介遊戲內容簡介遊戲內容共二十字</div>
+          <div className="action-btn intro-btn" onClick={() => this.props.switchView('quiz')}>開始！</div>
           <object className="svg svg-intro-avatar" data={svgImages['intro/avatar.svg']} type="image/svg+xml"> </object>
           <object className="svg svg-intro-dialog" data={svgImages['intro/dialog.svg']} type="image/svg+xml"> </object>
         </div>
