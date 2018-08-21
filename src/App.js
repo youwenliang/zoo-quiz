@@ -92,8 +92,13 @@ class Intro extends Component {
   render() {
     return (
       <div className="intro">
-        <h1>題目介紹 A_____A</h1>
-        <div className="action-button" onClick={() => this.props.switchView('quiz')}>開始玩！</div>
+        <div className="intro-container">
+          <div className="intro-title">Baited hang</div>
+          <div className="intro-description">By the third day, Mechalle Bro solved into firm resolve,</div>
+          <div className="intro-btn" onClick={() => this.props.switchView('quiz')}>START!</div>
+          <object className="svg svg-intro-avatar" data={svgImages['intro/avatar.svg']} type="image/svg+xml"> </object>
+          <object className="svg svg-intro-dialog" data={svgImages['intro/dialog.svg']} type="image/svg+xml"> </object>
+        </div>
       </div>
     );
   }

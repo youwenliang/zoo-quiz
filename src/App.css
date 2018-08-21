@@ -87,6 +87,68 @@ img {
   position: absolute;
   left: -24px;
   bottom: -10px;
-  border: 15px solid #AC5508;
+  border: 10px solid #AC5508;
   border-radius: 132px;
 }
+
+/* intro page */
+.intro {
+  background-color: #7FBE26;
+  width: 100%;
+  height: 100%;
+  padding-top: 350px;
+}
+
+.intro-container {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 690px;
+  height: 970px;
+  border-radius: 50px;
+  border: 10px solid #3E7C18;
+  margin: 0 auto;
+}
+
+.intro-title {
+  font-weight: 900;
+  font-size: 60px;
+  color: #3E7C18;
+  margin-top: 80px;
+  margin-bottom: 10px;
+}
+
+.intro-description {
+  width: 70%;
+  font-size: 32px;
+  color: #1A1A1A;
+  margin: 0 auto;
+}
+
+.intro-btn {
+  color: #FFF;
+  line-height: 146px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  width: 276px;
+  height: 146px;
+  margin: 40px auto 0;
+  position: relative;
+  background-color: #EF8519;
+  border-radius: 60px;
+  font-size: 60px;
+  font-family: 'Gen Jyuu Gothic X';
+}
+
+.intro-btn:before {
+  content: '';
+  width: 306px;
+  height: 164px;
+  position: absolute;
+  left: -12px;
+  bottom: -4px;
+  border: 8px solid #AC5508;
+  border-radius: 72px;
+}
+
+.svg-intro-avatar { width: 326px; right: 150px; bottom: 0; }
+.svg-intro-dialog { width: 130px; left: 104px; bottom: 272px; }
