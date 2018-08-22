@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'start',
+      view: 'quiz',
       toggleQuestionSets: 0,
       playerScore: 0,
       playerAnswers: []

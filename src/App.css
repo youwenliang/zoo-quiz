@@ -178,12 +178,24 @@ img {
   word-break: keep-all;
 }
 
-.answer-option.correct {
-  /* check icon */
+.answer-option.correct:after {
+  content: '';
+  background: url(./images/quiz/correct.svg);
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  right: -8px;
+  top: -8px;
 }
 
-.answer-option.incorrect {
-  /* cross icon */
+.answer-option.incorrect:after {
+  content: '';
+  background: url(./images/quiz/incorrect.svg);
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  right: -8px;
+  top: -8px;
 }
 
 .answer-option:before {
