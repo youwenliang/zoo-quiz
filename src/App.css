@@ -215,4 +215,22 @@ img {
 
 .illustration {
   margin: 60px auto;
+  position: relative;
+}
+
+.illustration:before {
+  content: '';
+  width: 264px;
+  height: 180px;
+  position: absolute;
+  right: 144px;
+  top: 60px;
+}
+
+.illustration.success:before {
+  background: url(./images/quiz/success.svg) center center no-repeat;
+}
+
+.illustration.failure:before {
+  background: url(./images/quiz/failure.svg) center center no-repeat;
 }

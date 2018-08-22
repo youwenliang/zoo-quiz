@@ -154,21 +154,19 @@ function AnswerOption(props) {
 }
 
 function Illustration(props) {
-  let questionStatus;
+  let playerAnswerStatus = '';
   if (props.answerRevealed) {
     if (props.answerSelected === props.answer) {
-      questionStatus = "illustration-success.svg";
+      playerAnswerStatus = "success";
     } else {
-      questionStatus = "illustration-failure.svg";
+      playerAnswerStatus = "failure";
     }
-  } else {
-    questionStatus = "illustration.svg";
   }
 
-  let illustrationSourcePath = "illustrations/" + illustrationOrder[props.questionCount] + "/" + questionStatus;
+  let illustrationSourcePath = "illustrations/" + illustrationOrder[props.questionCount] + "/illustration-" + playerAnswerStatus + ".svg";
   
   return (
-    <div className="illustration">
+    <div className={"illustration " + playerAnswerStatus}>
       <object data={svgImages[illustrationSourcePath]} type="image/svg+xml"> </object>
     </div>
   );
