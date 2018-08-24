@@ -5,8 +5,8 @@ import svgImages from './svg-import.js';
 const shuffleArray = (array) => {
   return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
 };
+
 let quizQuestionsShuffled;
-let illustrationOrder;
 
 class Quiz extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Quiz extends Component {
 
   componentWillMount() {
     quizQuestionsShuffled = shuffleArray(quizQuestions[this.props.toggleQuestionSets]);
-    illustrationOrder = shuffleArray([1,2,3,4,5]);
+    this.props.shuffleIllustrationOrder();
 
     let answerOptions = shuffleArray(quizQuestionsShuffled[0].answers);
     let answer = answerOptions.findIndex(e => {
@@ -87,6 +87,7 @@ class Quiz extends Component {
           answerSelected={this.state.answerSelected}
           answerRevealed={this.state.answerRevealed}
           onAnswerSelected={this.handleAnswerSelected.bind(this)}
+          illustrationOrder={this.props.illustrationOrder}
         />
         {nextStep}
       </div>
@@ -125,6 +126,7 @@ function Question(props) {
         answer={props.answer}
         answerSelected={props.answerSelected}
         answerRevealed={props.answerRevealed}
+        illustrationOrder={props.illustrationOrder}
       />
     </div>
   );
@@ -163,7 +165,7 @@ function Illustration(props) {
     }
   }
 
-  let illustrationSourcePath = "illustrations/" + illustrationOrder[props.questionCount] + "/illustration-" + playerAnswerStatus + ".svg";
+  let illustrationSourcePath = "illustrations/" + props.illustrationOrder[props.questionCount] + "/illustration-" + playerAnswerStatus + ".svg";
   
   return (
     <div className={"illustration " + playerAnswerStatus}>

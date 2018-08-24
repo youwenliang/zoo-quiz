@@ -12,7 +12,7 @@ function Result(props) {
           return (
             <PlayerAnswer
               key={index}
-              questionId={playerAnswer.questionId}
+              illustrationOrderIndex={props.illustrationOrder[index]}
               isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
             />
           );
@@ -32,7 +32,7 @@ function PlayerAnswer(props) {
 
   return (
     <div className={"detail-per-question "+ isPlayerAnswerCorrectMapping[+props.isPlayerAnswerCorrect]}>
-      <object className="svg-result-each" data={svgImages['result/each/' + props.questionId + '.svg']} type="image/svg+xml"> </object>
+      <object className="svg-result-each" data={svgImages['result/each/' + props.illustrationOrderIndex + '.svg']} type="image/svg+xml"> </object>
     </div>
   );
 }

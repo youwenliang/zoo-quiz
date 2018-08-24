@@ -4,6 +4,10 @@ import Result from './Result';
 import svgImages from './svg-import.js';
 import './App.css';
 
+const shuffleArray = (array) => {
+  return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +15,16 @@ class App extends Component {
       view: 'start',
       toggleQuestionSets: 0,
       playerScore: 0,
-      playerAnswers: []
+      playerAnswers: [],
+      illustrationOrder: []
     }
+  }
+
+  shuffleIllustrationOrder() {
+    let illustrationOrder = shuffleArray([1,2,3,4,5]);
+    this.setState({
+      illustrationOrder
+    });
   }
 
   setPlayerAnswers(questionId, isPlayerAnswerCorrect) {
@@ -55,8 +67,8 @@ class App extends Component {
     const viewContainerMapping = {
       'start': <Start view={this.state.view} switchView={this.switchView.bind(this)} />,
       'intro': <Intro view={this.state.view} switchView={this.switchView.bind(this)} />,
-      'quiz': <Quiz view={this.state.view} switchView={this.switchView.bind(this)} toggleQuestionSets={this.state.toggleQuestionSets} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers.bind(this)} />,
-      'result': <Result view={this.state.view} switchView={this.switchView.bind(this)} playerScore={this.state.playerScore} playerAnswers={this.state.playerAnswers} />,
+      'quiz': <Quiz view={this.state.view} switchView={this.switchView.bind(this)} toggleQuestionSets={this.state.toggleQuestionSets} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers.bind(this)} illustrationOrder={this.state.illustrationOrder} shuffleIllustrationOrder={this.shuffleIllustrationOrder.bind(this)} />,
+      'result': <Result view={this.state.view} switchView={this.switchView.bind(this)} playerScore={this.state.playerScore} playerAnswers={this.state.playerAnswers} illustrationOrder={this.state.illustrationOrder} />,
     }
     let container = viewContainerMapping[this.state.view];
 
