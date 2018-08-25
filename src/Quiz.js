@@ -165,7 +165,7 @@ function Illustration(props) {
     }
   }
 
-  let illustrationSourcePath = "illustrations/" + props.illustrationOrder[props.questionCount] + "/illustration-" + playerAnswerStatus + ".svg";
+  let illustrationSourcePath = "quiz/illustrations/" + props.illustrationOrder[props.questionCount] + "/illustration-" + playerAnswerStatus + ".svg";
   
   return (
     <div className={"illustration " + playerAnswerStatus}>
