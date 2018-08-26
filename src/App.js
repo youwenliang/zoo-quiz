@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import Quiz from './Quiz';
 import Result from './Result';
 import svgImages from './svg-import.js';
@@ -81,6 +82,61 @@ class App extends Component {
 }
 
 class Start extends Component {
+  componentDidMount() {
+    let tlAnimalShake = new TimelineMax({
+      paused: true,
+      repeat: -1,
+      yoyo: true
+    });
+
+    tlAnimalShake
+      .to(this.bird, .5, { x: '-2px', y: '1px', rotation: -1, transformOrigin: "left bottom", ease: Power1.easeInOut })
+      .to(this.cat, .5, { x: '2px', y: '1px', rotation: 1, transformOrigin: "right bottom", ease: Power1.easeInOut }, "-=0.5")
+      .to(this.mouse, .5, { x: '0', y: '10px', ease: Power1.easeInOut }, "-=0.5")
+      .from(this.lizard, .5, { x: '10px', y: '0', ease: Power1.easeInOut }, "-=0.5");
+
+    let tlAnimalAppear = new TimelineMax();
+    let tlAnimalDisappear = new TimelineMax();
+
+    tlAnimalAppear
+      .from(this.bird, .5, { x: '-80px', y: '400px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeIn })
+      .from(this.lizard, .25, { x: '225px', y: '0px', ease: Power1.easeIn }, "-=0.25")
+      .from(this.cat, .5, { x: '80px', y: '400px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeIn }, "-=0.25")
+      .from(this.mouse, .25, { x: '0', y: '130px', ease: Power1.easeIn }, "-=0.25"); 
+    tlAnimalDisappear
+      .to(this.bird, .25, { x: '-80px', y: '400px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeOut })
+      .to(this.cat, .25, { x: '80px', y: '400px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeOut }, "-=0.25")
+      .to(this.mouse, .25, { x: '0', y: '130px', ease: Power1.easeOut }, "-=0.25")
+      .to(this.lizard, .25, { x: '225px', y: '0px', ease: Power1.easeOut }, "-=0.25");
+
+    let tlAnimalMove = new TimelineMax({
+      repeat: -1,
+      repeatDelay: 1
+    });
+
+    tlAnimalMove
+      .add(tlAnimalAppear.play(), 'appear')
+      .call(() => tlAnimalShake.play(), null, null, 0.75)
+      .add(tlAnimalDisappear.play(), 4.75)
+      .call(() => tlAnimalShake.pause());
+    
+    let tlButtonMove = new TimelineMax({
+      repeat: -1
+    });
+
+    tlButtonMove
+      .to(this.btn, .25, {scale: 1.44, ease: Elastic.easeIn})
+      .from(this.btn, .75, {scale: 1.44, ease: Elastic.easeOut});
+
+    let tlBatMove = new TimelineMax({
+      repeat: -1,
+      yoyo: true
+    });
+
+    tlBatMove
+      .fromTo(this.bat, .5, {rotation: -3, skewY: 1, transformOrigin: "center top", ease: Power1.easeInOut}, {rotation: 2, skewY: -1, transformOrigin: "center top", ease: Power1.easeInOut});
+  }
+
   render() {
     return (
       <div className="start">
@@ -88,13 +144,13 @@ class Start extends Component {
         <object className="svg svg-start-branch" data={svgImages['start/branch.svg']} type="image/svg+xml"> </object>
         <object className="svg svg-start-logo" data={svgImages['start/logo.svg']} type="image/svg+xml"> </object>
         <object className="svg svg-start-title" data={svgImages['start/title.svg']} type="image/svg+xml"> </object>
-        <object className="svg svg-start-bat" data={svgImages['start/bat.svg']} type="image/svg+xml"> </object>
-        <object className="svg svg-start-bird" data={svgImages['start/bird.svg']} type="image/svg+xml"> </object>
-        <object className="svg svg-start-cat" data={svgImages['start/cat.svg']} type="image/svg+xml"> </object>
+        <object className="svg svg-start-bat" data={svgImages['start/bat.svg']} type="image/svg+xml" ref={(el) => {this.bat = el}}> </object>
+        <object className="svg svg-start-bird" data={svgImages['start/bird.svg']} type="image/svg+xml" ref={(el) => {this.bird = el}}> </object>
+        <object className="svg svg-start-cat" data={svgImages['start/cat.svg']} type="image/svg+xml" ref={(el) => {this.cat = el}}> </object>
         <object className="svg svg-start-grass" data={svgImages['start/grass.svg']} type="image/svg+xml"> </object>
-        <object className="svg svg-start-mouse" data={svgImages['start/mouse.svg']} type="image/svg+xml"> </object>
-        <object className="svg svg-start-lizard" data={svgImages['start/lizard.svg']} type="image/svg+xml"> </object>
-        <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')}>開始！</div>
+        <object className="svg svg-start-mouse" data={svgImages['start/mouse.svg']} type="image/svg+xml" ref={(el) => {this.mouse = el}}> </object>
+        <object className="svg svg-start-lizard" data={svgImages['start/lizard.svg']} type="image/svg+xml" ref={(el) => {this.lizard = el}}> </object>
+        <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')} ref={(el) => {this.btn = el}}>開始！</div>
       </div>
     );
   }
