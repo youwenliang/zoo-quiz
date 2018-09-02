@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TimelineMax, Power1 } from 'gsap/all';
 import quizQuestions from './quiz-questions';
 import svgImages from './svg-import.js';
 
@@ -23,6 +24,17 @@ class Quiz extends Component {
     }
   }
 
+  showQuestion() {
+    let content = this.questionNode.querySelector('.question-content');
+    let options = this.questionNode.querySelector('.answer-options');
+    let illustration = this.questionNode.querySelector('.illustration');
+    let tlshowQuestion = new TimelineMax();
+    tlshowQuestion
+      .fromTo(content, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
+      .fromTo(options, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
+      .fromTo(illustration, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25");
+  }
+
   componentWillMount() {
     quizQuestionsShuffled = shuffleArray(quizQuestions[this.props.toggleQuestionSets]);
     this.props.shuffleIllustrationOrder();
@@ -39,6 +51,14 @@ class Quiz extends Component {
       answerOptions,
       answer,   
     });
+  }
+
+  setRef(node) {
+    this.questionNode = node;
+  }
+
+  componentDidMount() {
+    this.showQuestion();
   }
 
   handleAnswerSelected(index) {
@@ -72,6 +92,7 @@ class Quiz extends Component {
         answerRevealed: false,
         descriptionRevealed: false
     });
+    this.showQuestion();
   }
 
   render() {
@@ -98,6 +119,7 @@ class Quiz extends Component {
           descriptionRevealed={this.state.descriptionRevealed}
           onAnswerSelected={this.handleAnswerSelected.bind(this)}
           illustrationOrder={this.props.illustrationOrder}
+          setRef={this.setRef.bind(this)}
         />
         {nextStep}
       </div>
@@ -106,45 +128,44 @@ class Quiz extends Component {
 }
 
 function Question(props) {
-  return (
-    <div className="question">
-      <div className="question-wrapper">
-        <div className="question-count">
-          Q{props.questionCount+1}
+    return (
+      <div className="question" ref={props.setRef}>
+        <div className="question-wrapper">
+          <div className="question-count">
+            Q{props.questionCount+1}
+          </div>
+          <div className="question-content">
+            {props.questionContent}
+          </div>
         </div>
-        <div className="question-content">
-          {props.questionContent}
+        <div className={"answer-options " + props.descriptionRevealed}>
+          {props.answerOptions.map((answerOption, index) => {
+            return (
+              <AnswerOption
+                key={index}
+                answerIndex={index}
+                answerOptionContent={answerOption.content}
+                answer={props.answer}
+                answerSelected={props.answerSelected}
+                answerRevealed={props.answerRevealed}
+                descriptionRevealed={props.descriptionRevealed}
+                onAnswerSelected={props.onAnswerSelected.bind(this)}
+              />
+            );
+          })}
+          <AnswerDescription
+            answerDescription={props.answerDescription}
+          />
         </div>
-      </div>
-      <div className={"answer-options " + props.descriptionRevealed}>
-        {props.answerOptions.map((answerOption, index) => {
-          return (
-            <AnswerOption
-              key={index}
-              answerIndex={index}
-              answerOptionContent={answerOption.content}
-              answer={props.answer}
-              answerSelected={props.answerSelected}
-              answerRevealed={props.answerRevealed}
-              descriptionRevealed={props.descriptionRevealed}
-              onAnswerSelected={props.onAnswerSelected.bind(this)}
-            />
-          );
-        })}
-        <AnswerDescription
-          answerDescription={props.answerDescription}
-          // descriptionRevealed={props.descriptionRevealed}
+        <Illustration
+          questionCount={props.questionCount}
+          answer={props.answer}
+          answerSelected={props.answerSelected}
+          answerRevealed={props.answerRevealed}
+          illustrationOrder={props.illustrationOrder}
         />
       </div>
-      <Illustration
-        questionCount={props.questionCount}
-        answer={props.answer}
-        answerSelected={props.answerSelected}
-        answerRevealed={props.answerRevealed}
-        illustrationOrder={props.illustrationOrder}
-      />
-    </div>
-  );
+    );
 }
 
 function AnswerOption(props) {
@@ -175,9 +196,6 @@ function AnswerOption(props) {
 }
 
 function AnswerDescription(props) {
-  // if (!props.descriptionRevealed) {
-  //   return null;
-  // }
   return (
     <div className="answer-description">
       {props.answerDescription}
