@@ -18,7 +18,8 @@ class Quiz extends Component {
       answerOptions: [],
       answer: -1,
       answerSelected: -1,
-      answerRevealed: false
+      answerRevealed: false,
+      descriptionRevealed: false
     }
   }
 
@@ -34,6 +35,7 @@ class Quiz extends Component {
     this.setState({
       questionId: quizQuestionsShuffled[0].questionId,
       question: quizQuestionsShuffled[0].question,
+      answerDescription: quizQuestionsShuffled[0].answerDescription,
       answerOptions,
       answer,   
     });
@@ -46,6 +48,10 @@ class Quiz extends Component {
         answerSelected: index,
         answerRevealed: true
       });
+
+      setTimeout(()=>{this.setState({
+        descriptionRevealed: true
+      })}, 1500);
     }
   }
 
@@ -60,15 +66,17 @@ class Quiz extends Component {
         questionCount,
         questionId: quizQuestionsShuffled[questionCount].questionId,
         question: quizQuestionsShuffled[questionCount].question,
+        answerDescription: quizQuestionsShuffled[questionCount].answerDescription,
         answerOptions,
         answer,
-        answerRevealed: false
+        answerRevealed: false,
+        descriptionRevealed: false
     });
   }
 
   render() {
     let nextStep;
-    if (this.state.answerRevealed) {
+    if (this.state.descriptionRevealed) {
       if (this.state.questionCount === quizQuestionsShuffled.length-1) {
         nextStep = <div className="action-btn" onClick={() => this.props.switchView('result')}>看結果！</div>
       } else {
@@ -82,10 +90,12 @@ class Quiz extends Component {
           questionCount={this.state.questionCount}
           questionId={this.state.questionId}
           questionContent={this.state.question}
+          answerDescription={this.state.answerDescription}
           answerOptions={this.state.answerOptions}
           answer={this.state.answer}
           answerSelected={this.state.answerSelected}
           answerRevealed={this.state.answerRevealed}
+          descriptionRevealed={this.state.descriptionRevealed}
           onAnswerSelected={this.handleAnswerSelected.bind(this)}
           illustrationOrder={this.props.illustrationOrder}
         />
@@ -106,7 +116,7 @@ function Question(props) {
           {props.questionContent}
         </div>
       </div>
-      <div className="answer-options">
+      <div className={"answer-options " + props.descriptionRevealed}>
         {props.answerOptions.map((answerOption, index) => {
           return (
             <AnswerOption
@@ -116,10 +126,15 @@ function Question(props) {
               answer={props.answer}
               answerSelected={props.answerSelected}
               answerRevealed={props.answerRevealed}
+              descriptionRevealed={props.descriptionRevealed}
               onAnswerSelected={props.onAnswerSelected.bind(this)}
             />
           );
         })}
+        <AnswerDescription
+          answerDescription={props.answerDescription}
+          // descriptionRevealed={props.descriptionRevealed}
+        />
       </div>
       <Illustration
         questionCount={props.questionCount}
@@ -137,6 +152,10 @@ function AnswerOption(props) {
     props.onAnswerSelected(props.answerIndex);
   }
 
+  if (props.descriptionRevealed && props.answerIndex !== props.answer) {
+    return null;
+  }
+
   let answerStatus = '';
   if (props.answerRevealed) {
     if (props.answerIndex === props.answer) {
@@ -147,12 +166,23 @@ function AnswerOption(props) {
   }
 
   return (
-    <div className={"answer-option " + answerStatus} onClick={handleClick}>
+    <div className={"answer-option " + answerStatus } onClick={handleClick}>
       <p>
         {props.answerOptionContent}
       </p>
     </div>
   );
+}
+
+function AnswerDescription(props) {
+  // if (!props.descriptionRevealed) {
+  //   return null;
+  // }
+  return (
+    <div className="answer-description">
+      {props.answerDescription}
+    </div>
+  )
 }
 
 function Illustration(props) {

@@ -159,6 +159,7 @@ img {
   justify-content: space-between;
   width: 70%;
   margin: 0 auto;
+  align-items: center;
 }
 
 .answer-option {
@@ -234,6 +235,23 @@ img {
 
 .illustration.failure:before {
   background: url(./images/quiz/failure.svg) center center no-repeat;
+}
+
+.answer-description {
+  position: absolute;
+  left: 37%;
+  width: 45%;
+  font-size: 36px;
+  color: #1A1A1A;
+  margin-left: 48px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.answer-options.true .answer-description{
+  visibility: visible;
+  opacity: 1;
 }
 
 /* result page */

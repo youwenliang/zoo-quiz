@@ -3,6 +3,7 @@ const quizQuestions = [
     {
       "questionId": 1,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字A",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字A",
       "answers": [
         {
           "isCorrect": true,
@@ -21,6 +22,7 @@ const quizQuestions = [
     {
       "questionId": 2,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字B",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字B",
       "answers": [
         {
           "isCorrect": true,
@@ -39,6 +41,7 @@ const quizQuestions = [
     {
       "questionId": 3,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字C",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字C",
       "answers": [
         {
           "isCorrect": true,
@@ -57,6 +60,7 @@ const quizQuestions = [
     {
       "questionId": 4,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字D",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字D",
       "answers": [
         {
           "isCorrect": true,
@@ -75,6 +79,7 @@ const quizQuestions = [
     {
       "questionId": 5,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字E",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字E",
       "answers": [
         {
           "isCorrect": true,
@@ -95,6 +100,7 @@ const quizQuestions = [
     {
       "questionId": 6,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字F",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字F",
       "answers": [
         {
           "isCorrect": true,
@@ -113,6 +119,7 @@ const quizQuestions = [
     {
       "questionId": 7,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字G",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字G",
       "answers": [
         {
           "isCorrect": true,
@@ -131,6 +138,7 @@ const quizQuestions = [
     {
       "questionId": 8,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字H",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字H",
       "answers": [
         {
           "isCorrect": true,
@@ -149,6 +157,7 @@ const quizQuestions = [
     {
       "questionId": 9,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字I",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字I",
       "answers": [
         {
           "isCorrect": true,
@@ -167,6 +176,7 @@ const quizQuestions = [
     {
       "questionId": 10,
       "question": "題目文字先帝創業未半而中道崩殂這樣二十字J",
+      "answerDescription": "解答說明今天下三分益州疲敝這樣總共二十字J",
       "answers": [
         {
           "isCorrect": true,
