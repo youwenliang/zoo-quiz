@@ -25,14 +25,35 @@ class Quiz extends Component {
   }
 
   showQuestion() {
+    let answerOption = this.questionNode.querySelectorAll('.answer-option');
+    let description = this.questionNode.querySelectorAll('.answer-description');
     let content = this.questionNode.querySelector('.question-content');
     let options = this.questionNode.querySelector('.answer-options');
     let illustration = this.questionNode.querySelector('.illustration');
     let tlshowQuestion = new TimelineMax();
     tlshowQuestion
+      .set(answerOption[0], { left: 0 })
+      .set(answerOption[1], { left: "278px" })
+      .set(answerOption[2], { left: "556px" })
+      .set(description, { opacity: 0, visibility: "hidden" })
       .fromTo(content, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
       .fromTo(options, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
       .fromTo(illustration, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25");
+  }
+
+  showDescription(){
+    setTimeout(() => {
+      this.setState({
+        descriptionRevealed: true
+      });
+      let correct = this.questionNode.querySelectorAll('.answer-option.correct');
+      let description = this.questionNode.querySelectorAll('.answer-description');
+      let tlshowDescription = new TimelineMax();
+      tlshowDescription
+        .to(correct, .25, { left: 0, ease: Power1.easeInOut })
+        .set(description, { visibility: "visible" })
+        .to(description, .25, { opacity: 1, ease: Power1.easeInOut });
+    }, 2500);
   }
 
   componentWillMount() {
@@ -68,10 +89,7 @@ class Quiz extends Component {
         answerSelected: index,
         answerRevealed: true
       });
-
-      setTimeout(()=>{this.setState({
-        descriptionRevealed: true
-      })}, 1500);
+      this.showDescription();
     }
   }
 
@@ -173,9 +191,9 @@ function AnswerOption(props) {
     props.onAnswerSelected(props.answerIndex);
   }
 
-  if (props.descriptionRevealed && props.answerIndex !== props.answer) {
-    return null;
-  }
+  // if (props.descriptionRevealed && props.answerIndex !== props.answer) {
+  //   return null;
+  // }
 
   let answerStatus = '';
   if (props.answerRevealed) {
