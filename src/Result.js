@@ -1,27 +1,94 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import svgImages from './svg-import.js';
 
-function Result(props) {
-  return (
-    <div className="result">
-      <div className="result-title">
-        總共捕獲<span class="result-score">{props.playerScore}</span>隻
+// radial-gradient(circle at center, #FFFFFF 0%, #FFFFFF 100%, #CDDC4C 70%, #CDDC4C 100%)
+
+let mock = {};
+mock.playerScore = 5;
+mock.playerAnswers = [
+  {questionId: 1, isPlayerAnswerCorrect: true},
+  {questionId: 2, isPlayerAnswerCorrect: false},
+  {questionId: 3, isPlayerAnswerCorrect: true},
+  {questionId: 4, isPlayerAnswerCorrect: false},
+  {questionId: 5, isPlayerAnswerCorrect: true}
+];
+mock.illustrationOrder = [1, 5, 4, 3, 2];
+
+class Result extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      animalDisplayed: 0
+    }
+  }
+
+  componentDidMount() {
+    this.showResultDetails();
+    // let tlshowResult = new TimelineMax();
+    // tlshowResult
+    //   .to(this.focus, .5, {scale: 1.4, ease: Power1.easeIn})
+    //   .fromTo(this.title, .5, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn}, "+=.25")
+    //   .fromTo(this.details, .5, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn}, "+=.25");
+  }
+
+  showResultDetails() {
+    let i = setInterval(() => {
+      let animalDisplayed = this.state.animalDisplayed+1;
+      this.setState({
+        animalDisplayed,
+      })
+      if(this.state.animalDisplayed === 5) {
+          clearInterval(i);
+      }
+    }, 500);
+  }
+
+  render() {
+    return (
+      <div className="result">
+        <div className="result-focus" ref={(el) => {this.focus = el}}></div>
+        <div className="result-title" ref={(el) => {this.title = el}}>
+          總共捕獲<span class="result-score">{mock.playerScore}</span>隻
+        </div>
+        <div className="result-details" ref={(el) => {this.details = el}}>
+          {mock.playerAnswers.map((playerAnswer, index) => {
+            return (
+              <PlayerAnswer
+                key={index}
+                answerOrder={index}
+                animalDisplayed={this.state.animalDisplayed}
+                illustrationOrderIndex={mock.illustrationOrder[index]}
+                isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
+              />
+            );
+          })}
+        </div>
+        <ResultIllustration playerScore={mock.playerScore} />
+        <div className="action-btn intro-btn result-btn" onClick={() => this.props.switchView('start')}>再玩一次！</div>
       </div>
-      <div className="result-details">
-        {props.playerAnswers.map((playerAnswer, index) => {
-          return (
-            <PlayerAnswer
-              key={index}
-              illustrationOrderIndex={props.illustrationOrder[index]}
-              isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
-            />
-          );
-        })}
-      </div>
-      <ResultIllustration playerScore={props.playerScore} />
-      <div className="action-btn intro-btn" onClick={() => props.switchView('start')}>再玩一次！</div>
-    </div>
-  );
+    );
+    // return (
+    //   <div className="result">
+    //     <div className="result-title">
+    //       總共捕獲<span class="result-score">{this.props.playerScore}</span>隻
+    //     </div>
+    //     <div className="result-details">
+    //       {this.props.playerAnswers.map((playerAnswer, index) => {
+    //         return (
+    //           <PlayerAnswer
+    //             key={index}
+    //             illustrationOrderIndex={this.props.illustrationOrder[index]}
+    //             isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
+    //           />
+    //         );
+    //       })}
+    //     </div>
+    //     <ResultIllustration playerScore={this.props.playerScore} />
+    //     <div className="action-btn intro-btn" onClick={() => this.props.switchView('start')}>再玩一次！</div>
+    //   </div>
+    // );
+  }
 }
 
 function PlayerAnswer(props) {
@@ -30,8 +97,10 @@ function PlayerAnswer(props) {
     1: "correct"
   }
 
+  let correctIndicator = (props.animalDisplayed < props.answerOrder) ? "": isPlayerAnswerCorrectMapping[+props.isPlayerAnswerCorrect];
+
   return (
-    <div className={"detail-per-question "+ isPlayerAnswerCorrectMapping[+props.isPlayerAnswerCorrect]}>
+    <div className={"detail-per-question "+ correctIndicator}>
       <object className="svg-result-each" data={svgImages['result/each/' + props.illustrationOrderIndex + '.svg']} type="image/svg+xml"> </object>
     </div>
   );
