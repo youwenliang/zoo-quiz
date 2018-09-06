@@ -419,9 +419,22 @@ img {
   transform: scale(0);
 }
 
+.result-description {
+  position: absolute;
+  left: 15%;
+  top: 1320px;
+  width: 70%;
+  opacity: 0;
+  word-break: keep-all;
+  text-align: center;
+  font-size: 42px;
+  color: #1A1A1A;
+  margin: 0 auto;
+}
+
 .result-btn {
   position: absolute;
-  top: 1320px;
+  top: 1450px;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
