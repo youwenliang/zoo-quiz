@@ -300,7 +300,13 @@ img {
 }
 
 .answer-description::before {
-  content: '正確解答：'
+  content: '說明';
+  text-align: center;
+  font-size: 28px;
+  display: block;
+  width: 56px;
+  margin-bottom: 20px;
+  border-bottom: 4px #488A1F dotted;
 }
 
 .answer-options.true .answer-option{

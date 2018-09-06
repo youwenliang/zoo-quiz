@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'result',
+      view: 'start',
       toggleQuestionSets: 0,
       playerScore: 0,
       playerAnswers: [],
@@ -48,7 +48,7 @@ class App extends Component {
 
   resetPlayerAnswers() {
     this.setState({
-      toggleQuestionSets: 1-this.state.toggleQuestionSets,
+      toggleQuestionSets: (this.state.toggleQuestionSets+1)%3,
       playerScore: 0,
       playerAnswers: []
     });
@@ -150,7 +150,7 @@ class Start extends Component {
         <object className="svg svg-start-grass" data={svgImages['start/grass.svg']} type="image/svg+xml"> </object>
         <object className="svg svg-start-mouse" data={svgImages['start/mouse.svg']} type="image/svg+xml" ref={(el) => {this.mouse = el}}> </object>
         <object className="svg svg-start-lizard" data={svgImages['start/lizard.svg']} type="image/svg+xml" ref={(el) => {this.lizard = el}}> </object>
-        <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')} ref={(el) => {this.btn = el}}>開始！</div>
+        <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')} ref={(el) => {this.btn = el}}>開始挑戰！</div>
       </div>
     );
   }
@@ -197,8 +197,8 @@ class Intro extends Component {
     return (
       <div className="intro">
         <div className="intro-container">
-          <div className="intro-title">遊戲介紹標題</div>
-          <div className="intro-description">遊戲內容簡介遊戲內容簡介遊戲內容共二十字</div>
+          <div className="intro-title">遊戲規則說明</div>
+          <div className="intro-description">動動腦回答問題，完成搜集野生動物的調查任務！</div>
           <div className="action-btn intro-btn" onClick={() => this.props.switchView('quiz')} ref={(el) => {this.btn = el}}>開始！</div>
           <object className="svg svg-intro-avatar" data={svgImages['intro/avatar.svg']} type="image/svg+xml" ref={(el) => {this.avatar = el}}> </object>
           <object className="svg svg-intro-dialog" data={svgImages['intro/dialog.svg']} type="image/svg+xml" ref={(el) => {this.dialog = el}}> </object>
