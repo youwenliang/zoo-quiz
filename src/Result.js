@@ -24,12 +24,18 @@ class Result extends Component {
   }
 
   componentDidMount() {
-    this.showResultDetails();
-    // let tlshowResult = new TimelineMax();
-    // tlshowResult
-    //   .to(this.focus, .5, {scale: 1.4, ease: Power1.easeIn})
-    //   .fromTo(this.title, .5, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn}, "+=.25")
-    //   .fromTo(this.details, .5, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn}, "+=.25");
+    let resultIllustration = this.result.querySelectorAll('.result-illustration');
+    let tlshowResult = new TimelineMax();
+    tlshowResult
+      .to(this.focus, .5, {scale: 1.2, ease: Elastic.easeIn})
+      .fromTo(this.title, .25, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn}, "+=.25")
+      .fromTo(this.details, .25, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn})
+      .call(() => this.showResultDetails(), null, null, 1.25)
+      .to(this.focus, .25, {scale: 1.6, ease: Power1.easeInOut}, "+=1.5")
+      .to(this.title, .25, {y: -480, ease: Power1.easeInOut}, "-=.25")
+      .to(this.details, .25, {y: -500, ease: Power1.easeInOut}, "-=.25")
+      .to(resultIllustration, .5, {opacity: 1, scale: 1, ease: Elastic.easeInOut})
+      .to(this.actionBtn, .25, {opacity: 1, ease: Power1.easeInOut}, "-=.25");
   }
 
   showResultDetails() {
@@ -41,12 +47,12 @@ class Result extends Component {
       if(this.state.animalDisplayed === 5) {
           clearInterval(i);
       }
-    }, 500);
+    }, 250);
   }
 
   render() {
     return (
-      <div className="result">
+      <div className="result" ref={(el) => {this.result = el}}>
         <div className="result-focus" ref={(el) => {this.focus = el}}></div>
         <div className="result-title" ref={(el) => {this.title = el}}>
           總共捕獲<span class="result-score">{mock.playerScore}</span>隻
@@ -65,7 +71,7 @@ class Result extends Component {
           })}
         </div>
         <ResultIllustration playerScore={mock.playerScore} />
-        <div className="action-btn intro-btn result-btn" onClick={() => this.props.switchView('start')}>再玩一次！</div>
+        <div className="action-btn intro-btn result-btn" onClick={() => this.props.switchView('start')} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
       </div>
     );
     // return (
@@ -97,7 +103,7 @@ function PlayerAnswer(props) {
     1: "correct"
   }
 
-  let correctIndicator = (props.animalDisplayed < props.answerOrder) ? "": isPlayerAnswerCorrectMapping[+props.isPlayerAnswerCorrect];
+  let correctIndicator = (props.animalDisplayed-1 < props.answerOrder) ? "": isPlayerAnswerCorrectMapping[+props.isPlayerAnswerCorrect];
 
   return (
     <div className={"detail-per-question "+ correctIndicator}>
