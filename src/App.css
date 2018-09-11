@@ -267,16 +267,20 @@ img {
 
 .illustration.success:before {
   background: url(./images/quiz/success.svg) center center no-repeat;
-  animation: stamp .5s ease-in;
+  animation: stamp 1s ease-in;
 }
 
 .illustration.failure:before {
   background: url(./images/quiz/failure.svg) center center no-repeat;
-  animation: stamp .5s ease-in;
+  animation: stamp 1s ease-in;
 }
 
 @keyframes stamp {
   0% {
+    transform: scale(5);
+    opacity: 0;
+  }
+  50% {
     transform: scale(5);
     opacity: 0;
   }
