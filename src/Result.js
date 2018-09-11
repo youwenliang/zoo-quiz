@@ -3,16 +3,16 @@ import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import resultDescriptions from './result-descriptions';
 import svgImages from './svg-import.js';
 
-// let mock = {};
-// mock.playerScore = 0;
-// mock.playerAnswers = [
-//   {questionId: 1, isPlayerAnswerCorrect: true},
-//   {questionId: 2, isPlayerAnswerCorrect: false},
-//   {questionId: 3, isPlayerAnswerCorrect: true},
-//   {questionId: 4, isPlayerAnswerCorrect: false},
-//   {questionId: 5, isPlayerAnswerCorrect: true}
-// ];
-// mock.illustrationOrder = [1, 5, 4, 3, 2];
+let mock = {};
+mock.playerScore = 0;
+mock.playerAnswers = [
+  {questionId: 1, isPlayerAnswerCorrect: true},
+  {questionId: 2, isPlayerAnswerCorrect: false},
+  {questionId: 3, isPlayerAnswerCorrect: true},
+  {questionId: 4, isPlayerAnswerCorrect: false},
+  {questionId: 5, isPlayerAnswerCorrect: true}
+];
+mock.illustrationOrder = [1, 5, 4, 3, 2];
 
 class Result extends Component {
   constructor(props) {
@@ -23,19 +23,19 @@ class Result extends Component {
   }
 
   componentDidMount() {
-    let resultIllustration = this.result.querySelectorAll('.result-illustration');
-    let resultDescription = this.result.querySelectorAll('.result-description');
+    this.resultIllustration = this.result.querySelectorAll('.result-illustration');
+    this.resultDescription = this.result.querySelectorAll('.result-description');
     let tlshowResult = new TimelineMax();
     tlshowResult
-      .to(this.focus, .5, {scale: 1.2, ease: Elastic.easeIn})
+      .to(this.focus, .25, {scale: 1.2, ease: Power1.easeOut})
       .fromTo(this.title, .25, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn}, "+=.25")
       .fromTo(this.details, .25, {scale: 0, ease: Power1.easeIn}, {scale: 1, ease: Power1.easeIn})
       .call(() => this.showResultDetails(), null, null, 1.25)
       .to(this.focus, .25, {scale: 1.6, ease: Power1.easeInOut}, "+=1.5")
       .to(this.title, .25, {y: -480, ease: Power1.easeInOut}, "-=.25")
       .to(this.details, .25, {y: -500, ease: Power1.easeInOut}, "-=.25")
-      .to(resultIllustration, .5, {opacity: 1, scale: 1, ease: Elastic.easeInOut})
-      .to(resultDescription, .25, {opacity: 1, ease: Power1.easeInOut})
+      .to(this.resultIllustration, .5, {opacity: 1, scale: 1, ease: Elastic.easeInOut})
+      .to(this.resultDescription, .25, {opacity: 1, ease: Power1.easeInOut})
       .to(this.actionBtn, .25, {opacity: 1, ease: Power1.easeInOut}, "-=.25");
   }
 
@@ -51,55 +51,67 @@ class Result extends Component {
     }, 250);
   }
 
+  restartGame = () => {
+    let tlending = new TimelineMax();
+    tlending
+      .to(this.focus, .25, {scale: 2.4, ease: Power1.easeIn})
+      .to(this.title, .25, {opacity: 0, ease: Power1.easeIn}, "-=.25")
+      .to(this.details, .25, {opacity: 0, ease: Power1.easeIn}, "-=.25")
+      .to(this.resultIllustration, .5, {opacity: 0, scale: 0, ease: Elastic.easeInOut}, "-=.25")
+      .to(this.resultDescription, .25, {opacity: 0, ease: Power1.easeInOut}, "-=.25")
+      .to(this.actionBtn, .25, {opacity: 0, ease: Power1.easeInOut}, "-=.25")
+      .call(() => this.props.switchView('start'), null, null, .5);
+  }
+
   render() {
-    // return (
-    //   <div className="result" ref={(el) => {this.result = el}}>
-    //     <div className="result-focus" ref={(el) => {this.focus = el}}></div>
-    //     <div className="result-title" ref={(el) => {this.title = el}}>
-    //       總共捕獲<span class="result-score">{mock.playerScore}</span>隻
-    //     </div>
-    //     <div className="result-details" ref={(el) => {this.details = el}}>
-    //       {mock.playerAnswers.map((playerAnswer, index) => {
-    //         return (
-    //           <PlayerAnswer
-    //             key={index}
-    //             answerOrder={index}
-    //             animalDisplayed={this.state.animalDisplayed}
-    //             illustrationOrderIndex={mock.illustrationOrder[index]}
-    //             isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
-    //           />
-    //         );
-    //       })}
-    //     </div>
-    //     <ResultIllustration playerScore={mock.playerScore} />
-    //     <ResultDescription playerScore={mock.playerScore} />
-    //     <div className="action-btn intro-btn result-btn" onClick={() => this.props.switchView('start')} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
-    //   </div>
-    // );
     return (
       <div className="result" ref={(el) => {this.result = el}}>
         <div className="result-focus" ref={(el) => {this.focus = el}}></div>
         <div className="result-title" ref={(el) => {this.title = el}}>
-          總共捕獲<span class="result-score">{this.props.playerScore}</span>隻
+          總共捕獲<span class="result-score">{mock.playerScore}</span>隻
         </div>
         <div className="result-details" ref={(el) => {this.details = el}}>
-          {this.props.playerAnswers.map((playerAnswer, index) => {
+          {mock.playerAnswers.map((playerAnswer, index) => {
             return (
               <PlayerAnswer
                 key={index}
                 answerOrder={index}
                 animalDisplayed={this.state.animalDisplayed}
-                illustrationOrderIndex={this.props.illustrationOrder[index]}
+                illustrationOrderIndex={mock.illustrationOrder[index]}
                 isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
               />
             );
           })}
         </div>
-        <ResultIllustration playerScore={this.props.playerScore} />
-        <ResultDescription playerScore={this.props.playerScore} />
-        <div className="action-btn intro-btn result-btn" onClick={() => this.props.switchView('start')} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
+        <ResultIllustration playerScore={mock.playerScore} />
+        <ResultDescription playerScore={mock.playerScore} />
+        <div className="action-btn intro-btn result-btn" onClick={this.restartGame} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
       </div>
     );
+    // return (
+    //   <div className="result" ref={(el) => {this.result = el}}>
+    //     <div className="result-focus" ref={(el) => {this.focus = el}}></div>
+    //     <div className="result-title" ref={(el) => {this.title = el}}>
+    //       總共捕獲<span class="result-score">{this.props.playerScore}</span>隻
+    //     </div>
+    //     <div className="result-details" ref={(el) => {this.details = el}}>
+    //       {this.props.playerAnswers.map((playerAnswer, index) => {
+    //         return (
+    //           <PlayerAnswer
+    //             key={index}
+    //             answerOrder={index}
+    //             animalDisplayed={this.state.animalDisplayed}
+    //             illustrationOrderIndex={this.props.illustrationOrder[index]}
+    //             isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
+    //           />
+    //         );
+    //       })}
+    //     </div>
+    //     <ResultIllustration playerScore={this.props.playerScore} />
+    //     <ResultDescription playerScore={this.props.playerScore} />
+    //     <div className="action-btn intro-btn result-btn" onClick={this.restartGame} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
+    //   </div>
+    // );
   }
 }
 
