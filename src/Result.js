@@ -3,16 +3,16 @@ import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import resultDescriptions from './result-descriptions';
 import svgImages from './svg-import.js';
 
-let mock = {};
-mock.playerScore = 0;
-mock.playerAnswers = [
-  {questionId: 1, isPlayerAnswerCorrect: true},
-  {questionId: 2, isPlayerAnswerCorrect: false},
-  {questionId: 3, isPlayerAnswerCorrect: true},
-  {questionId: 4, isPlayerAnswerCorrect: false},
-  {questionId: 5, isPlayerAnswerCorrect: true}
-];
-mock.illustrationOrder = [1, 5, 4, 3, 2];
+// let mock = {};
+// mock.playerScore = 0;
+// mock.playerAnswers = [
+//   {questionId: 1, isPlayerAnswerCorrect: true},
+//   {questionId: 2, isPlayerAnswerCorrect: false},
+//   {questionId: 3, isPlayerAnswerCorrect: true},
+//   {questionId: 4, isPlayerAnswerCorrect: false},
+//   {questionId: 5, isPlayerAnswerCorrect: true}
+// ];
+// mock.illustrationOrder = [1, 5, 4, 3, 2];
 
 class Result extends Component {
   constructor(props) {
@@ -64,54 +64,54 @@ class Result extends Component {
   }
 
   render() {
-    return (
-      <div className="result" ref={(el) => {this.result = el}}>
-        <div className="result-focus" ref={(el) => {this.focus = el}}></div>
-        <div className="result-title" ref={(el) => {this.title = el}}>
-          總共捕獲<span class="result-score">{mock.playerScore}</span>隻
-        </div>
-        <div className="result-details" ref={(el) => {this.details = el}}>
-          {mock.playerAnswers.map((playerAnswer, index) => {
-            return (
-              <PlayerAnswer
-                key={index}
-                answerOrder={index}
-                animalDisplayed={this.state.animalDisplayed}
-                illustrationOrderIndex={mock.illustrationOrder[index]}
-                isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
-              />
-            );
-          })}
-        </div>
-        <ResultIllustration playerScore={mock.playerScore} />
-        <ResultDescription playerScore={mock.playerScore} />
-        <div className="action-btn intro-btn result-btn" onClick={this.restartGame} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
-      </div>
-    );
     // return (
     //   <div className="result" ref={(el) => {this.result = el}}>
     //     <div className="result-focus" ref={(el) => {this.focus = el}}></div>
     //     <div className="result-title" ref={(el) => {this.title = el}}>
-    //       總共捕獲<span class="result-score">{this.props.playerScore}</span>隻
+    //       總共捕獲<span class="result-score">{mock.playerScore}</span>隻
     //     </div>
     //     <div className="result-details" ref={(el) => {this.details = el}}>
-    //       {this.props.playerAnswers.map((playerAnswer, index) => {
+    //       {mock.playerAnswers.map((playerAnswer, index) => {
     //         return (
     //           <PlayerAnswer
     //             key={index}
     //             answerOrder={index}
     //             animalDisplayed={this.state.animalDisplayed}
-    //             illustrationOrderIndex={this.props.illustrationOrder[index]}
+    //             illustrationOrderIndex={mock.illustrationOrder[index]}
     //             isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
     //           />
     //         );
     //       })}
     //     </div>
-    //     <ResultIllustration playerScore={this.props.playerScore} />
-    //     <ResultDescription playerScore={this.props.playerScore} />
+    //     <ResultIllustration playerScore={mock.playerScore} />
+    //     <ResultDescription playerScore={mock.playerScore} />
     //     <div className="action-btn intro-btn result-btn" onClick={this.restartGame} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
     //   </div>
     // );
+    return (
+      <div className="result" ref={(el) => {this.result = el}}>
+        <div className="result-focus" ref={(el) => {this.focus = el}}></div>
+        <div className="result-title" ref={(el) => {this.title = el}}>
+          總共捕獲<span class="result-score">{this.props.playerScore}</span>隻
+        </div>
+        <div className="result-details" ref={(el) => {this.details = el}}>
+          {this.props.playerAnswers.map((playerAnswer, index) => {
+            return (
+              <PlayerAnswer
+                key={index}
+                answerOrder={index}
+                animalDisplayed={this.state.animalDisplayed}
+                illustrationOrderIndex={this.props.illustrationOrder[index]}
+                isPlayerAnswerCorrect={playerAnswer.isPlayerAnswerCorrect}
+              />
+            );
+          })}
+        </div>
+        <ResultIllustration playerScore={this.props.playerScore} />
+        <ResultDescription playerScore={this.props.playerScore} />
+        <div className="action-btn intro-btn result-btn" onClick={this.restartGame} ref={(el) => {this.actionBtn = el}}>再玩一次！</div>
+      </div>
+    );
   }
 }
 
