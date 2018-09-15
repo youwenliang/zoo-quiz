@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TimelineMax, Power1 } from 'gsap/all';
 import quizQuestions from '../resources/quiz-questions';
-import svgImages from '../resources/svg-import';
+import quizIllustrations from '../resources/quiz-illustrations';
 
 const shuffleArray = (array) => {
   return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
@@ -231,7 +231,7 @@ function AnswerDescription(props) {
 }
 
 function Illustration(props) {
-  let playerAnswerStatus = '';
+  let playerAnswerStatus = "question";
   if (props.answerRevealed) {
     if (props.answerSelected === props.answer) {
       playerAnswerStatus = "success";
@@ -239,12 +239,15 @@ function Illustration(props) {
       playerAnswerStatus = "failure";
     }
   }
-
-  let illustrationSourcePath = "quiz/illustrations/" + props.illustrationOrder[props.questionCount] + "/illustration-" + playerAnswerStatus + ".svg";
   
+  let illustrationIndex = props.illustrationOrder[props.questionCount];
+  if (!illustrationIndex) {
+    return <div className={"illustration " + playerAnswerStatus}></div>;
+  }
+
   return (
     <div className={"illustration " + playerAnswerStatus}>
-      <object data={svgImages[illustrationSourcePath]} type="image/svg+xml"> </object>
+      {quizIllustrations[illustrationIndex][playerAnswerStatus]}
     </div>
   );
 }

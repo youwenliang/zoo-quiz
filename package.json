@@ -6,7 +6,7 @@
     "gsap": "^2.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^2.0.0-next.a671462c"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,5 +19,17 @@
   "devDependencies": {
     "gh-pages": "^1.2.0"
   },
-  "homepage": "https://youwenliang.github.io/zoo-quiz"
+  "homepage": "https://youwenliang.github.io/zoo-quiz",
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">0.25%",
+      "not op_mini all",
+      "ie 11"
+    ]
+  }
 }

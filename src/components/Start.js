@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
 import { TimelineMax, Power1, Elastic } from 'gsap/all';
-import svgImages from '../resources/svg-import.js';
+
+import { ReactComponent as StartBackground } from '../images/start/background.svg';
+import { ReactComponent as StartBranch } from '../images/start/branch.svg';
+import { ReactComponent as StartLogo } from '../images/start/logo.svg';
+import { ReactComponent as StartTitle } from '../images/start/title.svg';
+import { ReactComponent as StartBat } from '../images/start/bat.svg';
+import { ReactComponent as StartBird } from '../images/start/bird.svg';
+import { ReactComponent as StartCat } from '../images/start/cat.svg';
+import { ReactComponent as StartGrass } from '../images/start/grass.svg';
+import { ReactComponent as StartMouse } from '../images/start/mouse.svg';
+import { ReactComponent as StartLizard } from '../images/start/lizard.svg';
 
 class Start extends Component {
   componentDidMount() {
+    let background = this.start.querySelectorAll('.svg-start-background');
+    let branch = this.start.querySelectorAll('.svg-start-branch');
+    let logo = this.start.querySelectorAll('.svg-start-logo');
+    let title = this.start.querySelectorAll('.svg-start-title');
+    let bat = this.start.querySelectorAll('.svg-start-bat');
+    let bird = this.start.querySelectorAll('.svg-start-bird');
+    let cat = this.start.querySelectorAll('.svg-start-cat');
+    let grass = this.start.querySelectorAll('.svg-start-grass');
+    let mouse = this.start.querySelectorAll('.svg-start-mouse');
+    let lizard = this.start.querySelectorAll('.svg-start-lizard');
     
     let tlButtonMove = new TimelineMax({
       repeat: -1,
@@ -19,18 +39,18 @@ class Start extends Component {
       yoyo: true
     });
     tlBatMove
-      .fromTo(this.bat, .5, {rotation: -3, skewY: 1, transformOrigin: "center top", ease: Power1.easeInOut}, {rotation: 2, skewY: -1, transformOrigin: "center top", ease: Power1.easeInOut});
+      .fromTo(bat, .5, {rotation: -3, skewY: 1, transformOrigin: "center top", ease: Power1.easeInOut}, {rotation: 2, skewY: -1, transformOrigin: "center top", ease: Power1.easeInOut});
 
     let tlOpening = new TimelineMax();
     tlOpening
-      .fromTo(this.background, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
-      .from(this.branch, .25, { y: -300, ease: Elastic.easeInOut }, "-=0.25")
-      .from(this.bat, .25, { y: -300, ease: Elastic.easeInOut }, "-=0.25")
+      .fromTo(background, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
+      .from(branch, .25, { y: -300, ease: Elastic.easeInOut }, "-=0.25")
+      .from(bat, .25, { y: -300, ease: Elastic.easeInOut }, "-=0.25")
       .add(tlBatMove.play(), .5)
-      .from(this.grass, .25, { y: 350, ease: Elastic.easeInOut })
-      .fromTo(this.logo, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
+      .from(grass, .25, { y: 350, ease: Elastic.easeInOut })
+      .fromTo(logo, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
       .fromTo(this.btn, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
-      .fromTo(this.title, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
+      .fromTo(title, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
       .add(tlButtonMove.play(), 1.5);
 
     let tlAnimalShake = new TimelineMax({
@@ -40,24 +60,24 @@ class Start extends Component {
     });
 
     tlAnimalShake
-      .to(this.bird, .5, { x: '-2px', y: '1px', rotation: -1, transformOrigin: "left bottom", ease: Power1.easeInOut })
-      .to(this.cat, .5, { x: '2px', y: '1px', rotation: 1, transformOrigin: "right bottom", ease: Power1.easeInOut }, "-=0.5")
-      .to(this.mouse, .5, { x: '0', y: '10px', ease: Power1.easeInOut }, "-=0.5")
-      .from(this.lizard, .5, { x: '10px', y: '0', ease: Power1.easeInOut }, "-=0.5");
+      .to(bird, .5, { x: '-2px', y: '1px', rotation: -1, transformOrigin: "left bottom", ease: Power1.easeInOut })
+      .to(cat, .5, { x: '2px', y: '1px', rotation: 1, transformOrigin: "right bottom", ease: Power1.easeInOut }, "-=0.5")
+      .to(mouse, .5, { x: '0', y: '10px', ease: Power1.easeInOut }, "-=0.5")
+      .from(lizard, .5, { x: '10px', y: '0', ease: Power1.easeInOut }, "-=0.5");
 
     let tlAnimalAppear = new TimelineMax();
     let tlAnimalDisappear = new TimelineMax();
 
     tlAnimalAppear
-      .from(this.bird, .5, { x: '-80px', y: '500px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeIn })
-      .from(this.lizard, .25, { x: '225px', y: '0px', ease: Power1.easeIn }, "-=0.25")
-      .from(this.cat, .5, { x: '80px', y: '500px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeIn }, "-=0.25")
-      .from(this.mouse, .25, { x: '0', y: '130px', ease: Power1.easeIn }, "-=0.25"); 
+      .from(bird, .5, { x: '-80px', y: '500px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeIn })
+      .from(lizard, .25, { x: '225px', y: '0px', ease: Power1.easeIn }, "-=0.25")
+      .from(cat, .5, { x: '80px', y: '500px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeIn }, "-=0.25")
+      .from(mouse, .25, { x: '0', y: '130px', ease: Power1.easeIn }, "-=0.25"); 
     tlAnimalDisappear
-      .to(this.bird, .25, { x: '-80px', y: '500px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeOut })
-      .to(this.cat, .25, { x: '80px', y: '500px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeOut }, "-=0.25")
-      .to(this.mouse, .25, { x: '0', y: '130px', ease: Power1.easeOut }, "-=0.25")
-      .to(this.lizard, .25, { x: '225px', y: '0px', ease: Power1.easeOut }, "-=0.25");
+      .to(bird, .25, { x: '-80px', y: '500px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeOut })
+      .to(cat, .25, { x: '80px', y: '500px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeOut }, "-=0.25")
+      .to(mouse, .25, { x: '0', y: '130px', ease: Power1.easeOut }, "-=0.25")
+      .to(lizard, .25, { x: '225px', y: '0px', ease: Power1.easeOut }, "-=0.25");
 
     let tlAnimalMove = new TimelineMax({
       repeat: -1,
@@ -74,17 +94,17 @@ class Start extends Component {
 
   render() {
     return (
-      <div className="start">
-        <object className="svg svg-start-background" data={svgImages['start/background.svg']} type="image/svg+xml" ref={(el) => {this.background = el}}> </object>
-        <object className="svg svg-start-branch" data={svgImages['start/branch.svg']} type="image/svg+xml" ref={(el) => {this.branch = el}}> </object>
-        <object className="svg svg-start-logo" data={svgImages['start/logo.svg']} type="image/svg+xml" ref={(el) => {this.logo = el}}> </object>
-        <object className="svg svg-start-title" data={svgImages['start/title.svg']} type="image/svg+xml" ref={(el) => {this.title = el}}> </object>
-        <object className="svg svg-start-bat" data={svgImages['start/bat.svg']} type="image/svg+xml" ref={(el) => {this.bat = el}}> </object>
-        <object className="svg svg-start-bird" data={svgImages['start/bird.svg']} type="image/svg+xml" ref={(el) => {this.bird = el}}> </object>
-        <object className="svg svg-start-cat" data={svgImages['start/cat.svg']} type="image/svg+xml" ref={(el) => {this.cat = el}}> </object>
-        <object className="svg svg-start-grass" data={svgImages['start/grass.svg']} type="image/svg+xml" ref={(el) => {this.grass = el}}> </object>
-        <object className="svg svg-start-mouse" data={svgImages['start/mouse.svg']} type="image/svg+xml" ref={(el) => {this.mouse = el}}> </object>
-        <object className="svg svg-start-lizard" data={svgImages['start/lizard.svg']} type="image/svg+xml" ref={(el) => {this.lizard = el}}> </object>
+      <div className="start" ref={(el) => {this.start = el}}>
+        <StartBackground className="svg svg-start-background"/>
+        <StartBranch className="svg svg-start-branch"/>
+        <StartLogo className="svg svg-start-logo"/>
+        <StartTitle className="svg svg-start-title"/>
+        <StartBat className="svg svg-start-bat"/>
+        <StartBird className="svg svg-start-bird"/>
+        <StartCat className="svg svg-start-cat"/>
+        <StartGrass className="svg svg-start-grass"/>
+        <StartMouse className="svg svg-start-mouse"/>
+        <StartLizard className="svg svg-start-lizard"/>
         <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')} ref={(el) => {this.btn = el}}>開始挑戰！</div>
       </div>
     );

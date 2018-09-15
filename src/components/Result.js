@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import resultDescriptions from '../resources/result-descriptions';
-import svgImages from '../resources/svg-import';
+import resultIllustrations from '../resources/result-illustrations';
+
+import { ReactComponent as ResultIllustrationEAvatar } from '../images/result/excellent/avatar.svg';
+import { ReactComponent as ResultIllustrationEBackground } from '../images/result/excellent/background.svg';
+import { ReactComponent as ResultIllustrationEBird } from '../images/result/excellent/bird.svg';
+import { ReactComponent as ResultIllustrationECat } from '../images/result/excellent/cat.svg';
+import { ReactComponent as ResultIllustrationEMedal } from '../images/result/excellent/medal.svg';
+import { ReactComponent as ResultIllustrationERibbon } from '../images/result/excellent/ribbon.svg';
+
+import { ReactComponent as ResultIllustrationGAvatar } from '../images/result/great/avatar.svg';
+import { ReactComponent as ResultIllustrationGBackground } from '../images/result/great/background.svg';
+import { ReactComponent as ResultIllustrationGBird } from '../images/result/great/bird.svg';
+import { ReactComponent as ResultIllustrationGMedal } from '../images/result/great/medal.svg';
+import { ReactComponent as ResultIllustrationGRibbon } from '../images/result/great/ribbon.svg';
+
+import { ReactComponent as ResultIllustrationNAvatar } from '../images/result/nice/avatar.svg';
+import { ReactComponent as ResultIllustrationNMedal } from '../images/result/nice/medal.svg';
+import { ReactComponent as ResultIllustrationNRibbon } from '../images/result/nice/ribbon.svg';
+
+import { ReactComponent as ResultIllustrationOAvatar } from '../images/result/okay/avatar.svg';
+import { ReactComponent as ResultIllustrationOBook } from '../images/result/okay/book.svg';
+import { ReactComponent as ResultIllustrationORibbon } from '../images/result/okay/ribbon.svg';
 
 // let mock = {};
 // mock.playerScore = 0;
@@ -125,7 +146,7 @@ function PlayerAnswer(props) {
 
   return (
     <div className={"detail-per-question "+ correctIndicator}>
-      <object className="svg-result-each" data={svgImages['result/each/' + props.illustrationOrderIndex + '.svg']} type="image/svg+xml"> </object>
+      {resultIllustrations[props.illustrationOrderIndex]}
     </div>
   );
 }
@@ -160,9 +181,9 @@ function ResultIllustration(props) {
 function OkayIllustraionSet(props) {
   return (
     <div className="okay-illustration">
-      <object className="svg svg-result-okay-avatar" data={svgImages['result/okay/avatar.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-ribbon" data={svgImages['result/okay/ribbon.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-okay-book" data={svgImages['result/okay/book.svg']} type="image/svg+xml"> </object>
+      <ResultIllustrationOAvatar className="svg svg-result-okay-avatar" />
+      <ResultIllustrationORibbon className="svg svg-result-ribbon" />
+      <ResultIllustrationOBook className="svg svg-result-okay-book" />
     </div>
   );
 }
@@ -170,9 +191,9 @@ function OkayIllustraionSet(props) {
 function NiceIllustraionSet(props) {
   return (
     <div className="nice-illustration">
-      <object className="svg svg-result-nice-avatar" data={svgImages['result/nice/avatar.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-ribbon" data={svgImages['result/nice/ribbon.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-medal" data={svgImages['result/nice/medal.svg']} type="image/svg+xml"> </object>
+      <ResultIllustrationNAvatar className="svg svg-result-nice-avatar" />
+      <ResultIllustrationNRibbon className="svg svg-result-ribbon" />
+      <ResultIllustrationNMedal className="svg svg-result-medal" />
     </div>
   );
 }
@@ -180,11 +201,11 @@ function NiceIllustraionSet(props) {
 function GreatIllustraionSet(props) {
   return (
     <div className="great-illustration">
-      <object className="svg svg-result-great-background" data={svgImages['result/great/background.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-great-bird" data={svgImages['result/great/bird.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-great-avatar" data={svgImages['result/great/avatar.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-ribbon" data={svgImages['result/great/ribbon.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-medal" data={svgImages['result/great/medal.svg']} type="image/svg+xml"> </object>
+      <ResultIllustrationGBackground className="svg svg-result-great-background" />
+      <ResultIllustrationGBird className="svg svg-result-great-bird" />
+      <ResultIllustrationGAvatar className="svg svg-result-great-avatar" />
+      <ResultIllustrationGRibbon className="svg svg-result-ribbon" />
+      <ResultIllustrationGMedal className="svg svg-result-medal" />
     </div>
   );
 }
@@ -192,12 +213,12 @@ function GreatIllustraionSet(props) {
 function ExcellentIllustraionSet(props) {
   return (
     <div className="excellent-illustration">
-      <object className="svg svg-result-excellent-background" data={svgImages['result/excellent/background.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-excellent-bird" data={svgImages['result/excellent/bird.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-excellent-cat" data={svgImages['result/excellent/cat.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-excellent-avatar" data={svgImages['result/excellent/avatar.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-ribbon" data={svgImages['result/excellent/ribbon.svg']} type="image/svg+xml"> </object>
-      <object className="svg svg-result-medal" data={svgImages['result/excellent/medal.svg']} type="image/svg+xml"> </object>
+      <ResultIllustrationEBackground className="svg svg-result-excellent-background" />
+      <ResultIllustrationEBird className="svg svg-result-excellent-bird" />
+      <ResultIllustrationECat className="svg svg-result-excellent-cat" />
+      <ResultIllustrationEAvatar className="svg svg-result-excellent-avatar" />
+      <ResultIllustrationERibbon className="svg svg-result-ribbon" />
+      <ResultIllustrationEMedal className="svg svg-result-medal" />
     </div>
   );
 }
