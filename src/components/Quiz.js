@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TimelineMax, Power1 } from 'gsap/all';
-import quizQuestions from './quiz-questions';
-import svgImages from './svg-import.js';
+import quizQuestions from '../resources/quiz-questions';
+import svgImages from '../resources/svg-import';
 
 const shuffleArray = (array) => {
   return array.sort((a,b) => Math.random() < .5 ? 1 : -1);

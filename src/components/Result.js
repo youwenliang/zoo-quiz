@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TimelineMax, Power1, Elastic } from 'gsap/all';
-import resultDescriptions from './result-descriptions';
-import svgImages from './svg-import.js';
+import resultDescriptions from '../resources/result-descriptions';
+import svgImages from '../resources/svg-import';
 
 // let mock = {};
 // mock.playerScore = 0;
@@ -92,7 +92,7 @@ class Result extends Component {
       <div className="result" ref={(el) => {this.result = el}}>
         <div className="result-focus" ref={(el) => {this.focus = el}}></div>
         <div className="result-title" ref={(el) => {this.title = el}}>
-          總共捕獲<span class="result-score">{this.props.playerScore}</span>隻
+          總共捕獲<span className="result-score">{this.props.playerScore}</span>隻
         </div>
         <div className="result-details" ref={(el) => {this.details = el}}>
           {this.props.playerAnswers.map((playerAnswer, index) => {
