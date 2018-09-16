@@ -95,16 +95,16 @@ class Start extends Component {
   render() {
     return (
       <div className="start" ref={(el) => {this.start = el}}>
-        <StartBackground className="svg svg-start-background"/>
-        <StartBranch className="svg svg-start-branch"/>
-        <StartLogo className="svg svg-start-logo"/>
-        <StartTitle className="svg svg-start-title"/>
-        <StartBat className="svg svg-start-bat"/>
-        <StartBird className="svg svg-start-bird"/>
-        <StartCat className="svg svg-start-cat"/>
-        <StartGrass className="svg svg-start-grass"/>
-        <StartMouse className="svg svg-start-mouse"/>
-        <StartLizard className="svg svg-start-lizard"/>
+        <div className="svg svg-start-background"><StartBackground /></div>
+        <div className="svg svg-start-branch"><StartBranch /></div>
+        <div className="svg svg-start-logo"><StartLogo /></div>
+        <div className="svg svg-start-title"><StartTitle /></div>
+        <div className="svg svg-start-bat"><StartBat /></div>
+        <div className="svg svg-start-bird"><StartBird /></div>
+        <div className="svg svg-start-cat"><StartCat /></div>
+        <div className="svg svg-start-grass"><StartGrass /></div>
+        <div className="svg svg-start-mouse"><StartMouse /></div>
+        <div className="svg svg-start-lizard"><StartLizard /></div>
         <div className="action-btn start-btn" onClick={() => this.props.switchView('intro')} ref={(el) => {this.btn = el}}>開始挑戰！</div>
       </div>
     );

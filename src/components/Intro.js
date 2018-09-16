@@ -51,8 +51,8 @@ class Intro extends Component {
           <div className="intro-title">遊戲規則說明</div>
           <div className="intro-description">動動腦回答問題，完成搜集野生動物的調查任務！</div>
           <div className="action-btn intro-btn" onClick={() => this.props.switchView('quiz')} ref={(el) => {this.btn = el}}>開始！</div>
-          <IntroAvatar className="svg svg-intro-avatar"/>
-          <IntroDialog className="svg svg-intro-dialog"/>
+          <div className="svg svg-intro-avatar"><IntroAvatar /></div>
+          <div className="svg svg-intro-dialog"><IntroDialog /></div>
         </div>
       </div>
     );

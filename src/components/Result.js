@@ -181,9 +181,9 @@ function ResultIllustration(props) {
 function OkayIllustraionSet(props) {
   return (
     <div className="okay-illustration">
-      <ResultIllustrationOAvatar className="svg svg-result-okay-avatar" />
-      <ResultIllustrationORibbon className="svg svg-result-ribbon" />
-      <ResultIllustrationOBook className="svg svg-result-okay-book" />
+      <div className="svg svg-result-okay-avatar"><ResultIllustrationOAvatar /></div>
+      <div className="svg svg-result-ribbon"><ResultIllustrationORibbon /></div>
+      <div className="svg svg-result-okay-book"><ResultIllustrationOBook /></div>
     </div>
   );
 }
@@ -191,9 +191,9 @@ function OkayIllustraionSet(props) {
 function NiceIllustraionSet(props) {
   return (
     <div className="nice-illustration">
-      <ResultIllustrationNAvatar className="svg svg-result-nice-avatar" />
-      <ResultIllustrationNRibbon className="svg svg-result-ribbon" />
-      <ResultIllustrationNMedal className="svg svg-result-medal" />
+      <div className="svg svg-result-nice-avatar"><ResultIllustrationNAvatar  /></div>
+      <div className="svg svg-result-ribbon"><ResultIllustrationNRibbon /></div>
+      <div className="svg svg-result-medal"><ResultIllustrationNMedal /></div>
     </div>
   );
 }
@@ -201,11 +201,11 @@ function NiceIllustraionSet(props) {
 function GreatIllustraionSet(props) {
   return (
     <div className="great-illustration">
-      <ResultIllustrationGBackground className="svg svg-result-great-background" />
-      <ResultIllustrationGBird className="svg svg-result-great-bird" />
-      <ResultIllustrationGAvatar className="svg svg-result-great-avatar" />
-      <ResultIllustrationGRibbon className="svg svg-result-ribbon" />
-      <ResultIllustrationGMedal className="svg svg-result-medal" />
+      <div className="svg svg-result-great-background"><ResultIllustrationGBackground /></div>
+      <div className="svg svg-result-great-bird"><ResultIllustrationGBird /></div>
+      <div className="svg svg-result-great-avatar"><ResultIllustrationGAvatar /></div>
+      <div className="svg svg-result-ribbon"><ResultIllustrationGRibbon /></div>
+      <div className="svg svg-result-medal"><ResultIllustrationGMedal /></div>
     </div>
   );
 }
@@ -213,12 +213,12 @@ function GreatIllustraionSet(props) {
 function ExcellentIllustraionSet(props) {
   return (
     <div className="excellent-illustration">
-      <ResultIllustrationEBackground className="svg svg-result-excellent-background" />
-      <ResultIllustrationEBird className="svg svg-result-excellent-bird" />
-      <ResultIllustrationECat className="svg svg-result-excellent-cat" />
-      <ResultIllustrationEAvatar className="svg svg-result-excellent-avatar" />
-      <ResultIllustrationERibbon className="svg svg-result-ribbon" />
-      <ResultIllustrationEMedal className="svg svg-result-medal" />
+      <div className="svg svg-result-excellent-background"><ResultIllustrationEBackground /></div>
+      <div className="svg svg-result-excellent-bird"><ResultIllustrationEBird /></div>
+      <div className="svg svg-result-excellent-cat"><ResultIllustrationECat /></div>
+      <div className="svg svg-result-excellent-avatar"><ResultIllustrationEAvatar /></div>
+      <div className="svg svg-result-ribbon"><ResultIllustrationERibbon /></div>
+      <div className="svg svg-result-medal"><ResultIllustrationEMedal /></div>
     </div>
   );
 }
