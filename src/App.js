@@ -6,7 +6,7 @@ import Result from './components/Result';
 import './App.css';
 
 const shuffleArray = (array) => {
-  return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
+  return array.sort(() => Math.random() < .5 ? 1 : -1);
 };
 
 class App extends Component {

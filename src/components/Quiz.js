@@ -4,7 +4,7 @@ import quizQuestions from '../resources/quiz-questions';
 import quizIllustrations from '../resources/quiz-illustrations';
 
 const shuffleArray = (array) => {
-  return array.sort((a,b) => Math.random() < .5 ? 1 : -1);
+  return array.sort(() => Math.random() < .5 ? 1 : -1);
 };
 
 let quizQuestionsShuffled;

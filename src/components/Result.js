@@ -169,6 +169,7 @@ function ResultIllustration(props) {
     case 5:
       ResultIllustrationSet = <ExcellentIllustraionSet />
       break;
+    default:
   }
 
   return (
@@ -178,7 +179,7 @@ function ResultIllustration(props) {
   );
 }
 
-function OkayIllustraionSet(props) {
+function OkayIllustraionSet() {
   return (
     <div className="okay-illustration">
       <div className="svg svg-result-okay-avatar"><ResultIllustrationOAvatar /></div>
@@ -188,7 +189,7 @@ function OkayIllustraionSet(props) {
   );
 }
 
-function NiceIllustraionSet(props) {
+function NiceIllustraionSet() {
   return (
     <div className="nice-illustration">
       <div className="svg svg-result-nice-avatar"><ResultIllustrationNAvatar  /></div>
@@ -198,7 +199,7 @@ function NiceIllustraionSet(props) {
   );
 }
 
-function GreatIllustraionSet(props) {
+function GreatIllustraionSet() {
   return (
     <div className="great-illustration">
       <div className="svg svg-result-great-background"><ResultIllustrationGBackground /></div>
@@ -210,7 +211,7 @@ function GreatIllustraionSet(props) {
   );
 }
 
-function ExcellentIllustraionSet(props) {
+function ExcellentIllustraionSet() {
   return (
     <div className="excellent-illustration">
       <div className="svg svg-result-excellent-background"><ResultIllustrationEBackground /></div>
@@ -241,6 +242,7 @@ function ResultDescription(props) {
     case 5:
       resultDescription = resultDescriptions.excellent;
       break;
+    default:
   }
 
   return (
