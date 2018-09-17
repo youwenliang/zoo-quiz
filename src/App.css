@@ -17,6 +17,7 @@
   height: 1920px;
   position: relative;
   font-family: 'Gen Jyuu Gothic X';
+  overflow: hidden;
 }
 
 img {
@@ -44,11 +45,12 @@ img {
   border: 8px solid #AC5508;
   border-radius: 84px;
   color: #FFF;
-  font-size: 60px;
+  font-size: 52px;
   font-weight: 900;
   line-height: 180px;
   letter-spacing: .05em;
   text-align: center;
+  text-indent: .25em;
 }
 
 .action-btn:before {
@@ -77,9 +79,9 @@ img {
 .svg-start-bat { width: 106px; right: 120px; top: 88px; }
 .svg-start-bird { width: 328px; left: 84px; bottom: 38px; }
 .svg-start-cat { width: 254px; right: 180px; bottom: 138px; }
-.svg-start-grass { width: 100%; left: 0; bottom: 0; }
-.svg-start-mouse { width: 192px; left: 0; bottom: 0; }
-.svg-start-lizard { width: 220px; right: 0; bottom: 0; }
+.svg-start-grass { width: 100%; left: 0; bottom: -6px; }
+.svg-start-mouse { width: 192px; left: 0; bottom: -6px; }
+.svg-start-lizard { width: 220px; right: 0; bottom: -6px; }
 
 .start-btn {
   position: absolute;
@@ -130,7 +132,7 @@ img {
 }
 
 .svg-intro-avatar { width: 326px; right: 150px; bottom: -10px; }
-.svg-intro-dialog { width: 130px; left: 104px; bottom: 272px; }
+.svg-intro-dialog { width: 130px; left: 92px; bottom: 272px; }
 
 /* quiz page */
 
@@ -321,7 +323,7 @@ img {
   visibility: visible;
 }
 
-.quiz .action-btn {
+.quiz-btn {
   animation: show .5s ease-in;
 }
 
@@ -432,7 +434,7 @@ img {
 .result-description {
   position: absolute;
   left: 15%;
-  top: 1320px;
+  top: 1290px;
   width: 70%;
   opacity: 0;
   word-break: keep-all;
@@ -444,7 +446,7 @@ img {
 
 .result-btn {
   position: absolute;
-  top: 1450px;
+  top: 1430px;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;

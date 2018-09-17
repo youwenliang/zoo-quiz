@@ -43,14 +43,14 @@ class Start extends Component {
 
     let tlOpening = new TimelineMax();
     tlOpening
-      .fromTo(background, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
-      .from(branch, .25, { y: -300, ease: Elastic.easeInOut }, "-=0.25")
-      .from(bat, .25, { y: -300, ease: Elastic.easeInOut }, "-=0.25")
+      .fromTo(background, .25, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
+      .from(branch, .25, { y: -300, ease: Elastic.easeInOut })
+      .from(bat, .25, { y: -300, ease: Elastic.easeInOut }, "-=.25")
+      .from(grass, .25, { y: 380, ease: Elastic.easeInOut })
       .add(tlBatMove.play(), .5)
-      .from(grass, .25, { y: 350, ease: Elastic.easeInOut })
-      .fromTo(logo, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut })
-      .fromTo(this.btn, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
-      .fromTo(title, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=0.25")
+      .fromTo(logo, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut },"-=.1")
+      .fromTo(title, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=.25")
+      .fromTo(this.btn, .5, { opacity: 0, ease: Power1.easeInOut }, { opacity: 1, ease: Power1.easeInOut }, "-=.25")
       .add(tlButtonMove.play(), 1.5);
 
     let tlAnimalShake = new TimelineMax({
@@ -69,12 +69,12 @@ class Start extends Component {
     let tlAnimalDisappear = new TimelineMax();
 
     tlAnimalAppear
-      .from(bird, .5, { x: '-80px', y: '500px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeIn })
+      .from(bird, .5, { x: '-80px', y: '520px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeIn })
       .from(lizard, .25, { x: '225px', y: '0px', ease: Power1.easeIn }, "-=0.25")
       .from(cat, .5, { x: '80px', y: '500px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeIn }, "-=0.25")
       .from(mouse, .25, { x: '0', y: '130px', ease: Power1.easeIn }, "-=0.25"); 
     tlAnimalDisappear
-      .to(bird, .25, { x: '-80px', y: '500px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeOut })
+      .to(bird, .25, { x: '-80px', y: '520px', rotation: -30, transformOrigin: "left bottom", ease: Power1.easeOut })
       .to(cat, .25, { x: '80px', y: '500px', rotation: 30, transformOrigin: "right bottom", ease: Power1.easeOut }, "-=0.25")
       .to(mouse, .25, { x: '0', y: '130px', ease: Power1.easeOut }, "-=0.25")
       .to(lizard, .25, { x: '225px', y: '0px', ease: Power1.easeOut }, "-=0.25");

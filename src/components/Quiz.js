@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TimelineMax, Power1 } from 'gsap/all';
+import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import quizQuestions from '../resources/quiz-questions';
 import quizIllustrations from '../resources/quiz-illustrations';
 
@@ -48,11 +48,22 @@ class Quiz extends Component {
       });
       let correct = this.questionNode.querySelectorAll('.answer-option.correct');
       let description = this.questionNode.querySelectorAll('.answer-description');
+
+      let tlButtonMove = new TimelineMax({
+        repeat: -1,
+        pause: true
+      });
+  
+      tlButtonMove
+        .to(this.btn, .25, {scale: 1.04, ease: Elastic.easeIn})
+        .from(this.btn, .75, {scale: 1.04, ease: Elastic.easeOut});
+
       let tlshowDescription = new TimelineMax();
       tlshowDescription
         .to(correct, .25, { left: 0, ease: Power1.easeInOut })
         .set(description, { visibility: "visible" })
-        .to(description, .25, { opacity: 1, ease: Power1.easeInOut });
+        .to(description, .25, { opacity: 1, ease: Power1.easeInOut })
+        .add(tlButtonMove.play(), .25);
     }, 2500);
   }
 
@@ -126,9 +137,9 @@ class Quiz extends Component {
     let nextStep;
     if (this.state.descriptionRevealed) {
       if (this.state.questionCount === quizQuestionsShuffled.length-1) {
-        nextStep = <div className="action-btn" onClick={() => this.props.switchView('result')}>看結果！</div>
+        nextStep = <div className="quiz-btn action-btn" onClick={() => this.props.switchView('result')} ref={(el) => {this.btn = el}}>看結果！</div>
       } else {
-        nextStep = <div className="action-btn" onClick={this.setNextQuestion.bind(this)}>下一題！</div>
+        nextStep = <div className="quiz-btn action-btn" onClick={this.setNextQuestion.bind(this)} ref={(el) => {this.btn = el}}>下一題！</div>
       }
     }
 
