@@ -3,6 +3,7 @@ import Start from './components/Start';
 import Intro from './components/Intro';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
+import AudioLib from './resources/audio-library'; 
 import './App.css';
 
 const shuffleArray = (array) => {
@@ -22,6 +23,7 @@ class App extends Component {
     this.switchView = this.switchView.bind(this);
     this.setPlayerAnswers = this.setPlayerAnswers.bind(this);
     this.shuffleIllustrationOrder = this.shuffleIllustrationOrder.bind(this);
+    this.audioLib = new AudioLib();
   }
 
   shuffleIllustrationOrder() {
@@ -67,6 +69,10 @@ class App extends Component {
     })
   }
 
+  componentDidMount(){
+    this.audioLib.play('bgm');
+  }
+
   render() {
     const viewContainerMapping = {
       'start': <Start view={this.state.view} switchView={this.switchView} />,
@@ -78,6 +84,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        {/* <Music /> */}
         {container}
       </div>
     );
