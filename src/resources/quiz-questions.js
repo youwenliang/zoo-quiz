@@ -2,8 +2,8 @@ const quizQuestions = [
   [
     {
       "questionId": 1,
-      "question": "以下哪一雙鞋子比較適合野外調查？",
-      "answerDescription": "雨鞋可以防水、防滑、防蛇咬，適合進行野外調查。",
+      "question": "以下哪一雙鞋子比較適合野外調<span class='source-han'>查</span>？",
+      "answerDescription": "雨鞋可以防水、防滑、防蛇咬，適合進行野外調<span class='source-han'>查</span>。",
       "answers": [
         {
           "isCorrect": true,
@@ -40,7 +40,7 @@ const quizQuestions = [
     },
     {
       "questionId": 3,
-      "question": "為什麼「豎琴網」能夠捕捉到蝙蝠？",
+      "question": "為什麼「豎琴網」能<span class='source-han'>夠</span>捕捉到蝙蝠？",
       "answerDescription": "利用不會反射聲波的魚線網構造，成功捕捉蝙蝠進行研究。",
       "answers": [
         {
@@ -137,7 +137,7 @@ const quizQuestions = [
     },
     {
       "questionId": 8,
-      "question": "「天線與發報器」在野外調查時是用來？",
+      "question": "「天線與發報器」在野外調<span class='source-han'>查</span>時是用來？",
       "answerDescription": "天線與發報器能用來搜尋追蹤之前野放的動物是否在附近。",
       "answers": [
         {
@@ -176,7 +176,7 @@ const quizQuestions = [
     {
       "questionId": 10,
       "question": "輕巧可折疊，適合捕捉小動物的道具是？",
-      "answerDescription": "常用於小型哺乳動物的調查道具，可折疊縮小體積。",
+      "answerDescription": "常用於小型哺乳動物的調<span class='source-han'>查</span>道具，可折疊縮小體積。",
       "answers": [
         {
           "isCorrect": true,

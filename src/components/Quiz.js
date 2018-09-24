@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import quizQuestions from '../resources/quiz-questions';
 import quizIllustrations from '../resources/quiz-illustrations';
+import HtmlParser from 'html-react-parser';
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() < .5 ? 1 : -1);
@@ -175,7 +176,7 @@ function Question(props) {
             Q{props.questionCount+1}
           </div>
           <div className="question-content">
-            {props.questionContent}
+            {HtmlParser(props.questionContent)}
           </div>
         </div>
         <div className={"answer-options " + props.descriptionRevealed}>
@@ -194,7 +195,7 @@ function Question(props) {
             );
           })}
           <AnswerDescription
-            answerDescription={props.answerDescription}
+            answerDescription={HtmlParser(props.answerDescription)}
           />
         </div>
         <Illustration

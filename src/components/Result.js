@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TimelineMax, Power1, Elastic } from 'gsap/all';
 import resultDescriptions from '../resources/result-descriptions';
 import resultIllustrations from '../resources/result-illustrations';
+import HtmlParser from 'html-react-parser';
 
 import { ReactComponent as ResultIllustrationEAvatar } from '../images/result/excellent/avatar.svg';
 import { ReactComponent as ResultIllustrationEBackground } from '../images/result/excellent/background.svg';
@@ -257,7 +258,7 @@ function ResultDescription(props) {
 
   return (
     <div className="result-description">
-      {resultDescription}
+      {HtmlParser(resultDescription)}
     </div>
   );
 }

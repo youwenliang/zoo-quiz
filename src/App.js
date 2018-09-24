@@ -90,7 +90,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <Music /> */}
         {container}
       </div>
     );

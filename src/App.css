@@ -12,6 +12,13 @@
   src: url(fonts/GenJyuuGothicX-Bold.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Source Han Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/SourceHanSansTC-Medium.otf) format('opentype');
+}
+
 .App {
   width: 1080px;
   height: 1920px;
@@ -69,6 +76,10 @@ img {
 
 .svg {
   position: absolute;
+}
+
+.source-han {
+  font-family: 'Source Han Sans TC';
 }
 
 /* start page */
