@@ -95,11 +95,12 @@ class Quiz extends Component {
 
   revealAnswer(index) {
     this.props.setPlayerAnswers(this.state.questionId, index === this.state.answer);
-      this.setState({
-        answerSelected: index,
-        answerRevealed: true
-      });
-      this.showDescription();
+    this.setState({
+      answerSelected: index,
+      answerRevealed: true
+    });
+    this.showDescription();
+    this.props.playAudio(index === this.state.answer ? 'success':'failure');
   }
 
   handleAnswerSelected(index) {
@@ -114,6 +115,7 @@ class Quiz extends Component {
   }
 
   setNextQuestion() {
+    this.props.playAudio('next');
     let questionCount = this.state.questionCount + 1;
     let answerOptions = shuffleArray(quizQuestionsShuffled[questionCount].answers);
     let answer = answerOptions.findIndex(e => {
@@ -211,17 +213,13 @@ function AnswerOption(props) {
     props.onAnswerSelected(props.answerIndex);
   }
 
-  // if (props.descriptionRevealed && props.answerIndex !== props.answer) {
-  //   return null;
-  // }
-
   let answerStatus = '';
   if (props.answerRevealed) {
     if (props.answerIndex === props.answer) {
       answerStatus = 'correct';
     } else if (props.answerIndex === props.answerSelected){
       answerStatus = 'incorrect';
-    }
+    } 
   }
 
   return (

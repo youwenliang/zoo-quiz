@@ -23,6 +23,7 @@ class App extends Component {
     this.switchView = this.switchView.bind(this);
     this.setPlayerAnswers = this.setPlayerAnswers.bind(this);
     this.shuffleIllustrationOrder = this.shuffleIllustrationOrder.bind(this);
+    this.playAudio = this.playAudio.bind(this);
     this.audioLib = new AudioLib();
   }
 
@@ -60,6 +61,7 @@ class App extends Component {
   }
 
   switchView(view) {
+    this.playAudio('switch');
     if (view === 'start') {
       this.resetPlayerAnswers();
     }
@@ -69,15 +71,19 @@ class App extends Component {
     })
   }
 
-  componentDidMount(){
-    this.audioLib.play('bgm');
+  componentDidMount() {
+    this.audioLib.playBGM();
+  }
+
+  playAudio(audioName) {
+    this.audioLib.play(audioName);
   }
 
   render() {
     const viewContainerMapping = {
       'start': <Start view={this.state.view} switchView={this.switchView} />,
       'intro': <Intro view={this.state.view} switchView={this.switchView} />,
-      'quiz': <Quiz view={this.state.view} switchView={this.switchView} toggleQuestionSets={this.state.toggleQuestionSets} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers} illustrationOrder={this.state.illustrationOrder} shuffleIllustrationOrder={this.shuffleIllustrationOrder} />,
+      'quiz': <Quiz view={this.state.view} switchView={this.switchView} toggleQuestionSets={this.state.toggleQuestionSets} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers} illustrationOrder={this.state.illustrationOrder} shuffleIllustrationOrder={this.shuffleIllustrationOrder} playAudio={this.playAudio}/>,
       'result': <Result view={this.state.view} switchView={this.switchView} playerScore={this.state.playerScore} playerAnswers={this.state.playerAnswers} illustrationOrder={this.state.illustrationOrder} />,
     }
     let container = viewContainerMapping[this.state.view];
