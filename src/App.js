@@ -18,7 +18,8 @@ class App extends Component {
       toggleQuestionSets: 0,
       playerScore: 0,
       playerAnswers: [],
-      illustrationOrder: []
+      illustrationOrder: [],
+      isBGMPlayed: false
     };
     this.switchView = this.switchView.bind(this);
     this.setPlayerAnswers = this.setPlayerAnswers.bind(this);
@@ -71,12 +72,15 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    this.audioLib.playBGM();
-  }
-
   playAudio(audioName) {
     this.audioLib.play(audioName);
+  }
+
+  playBGM(){
+    this.audioLib.playBGM();
+    this.setState({
+      isBGMPlayed: true
+    });
   }
 
   render() {
@@ -87,9 +91,11 @@ class App extends Component {
       'result': <Result view={this.state.view} switchView={this.switchView} playerScore={this.state.playerScore} playerAnswers={this.state.playerAnswers} illustrationOrder={this.state.illustrationOrder} />,
     }
     let container = viewContainerMapping[this.state.view];
-
+    let playThatBGM = this.state.isBGMPlayed ? null : <div className="play-that-bgm" onClick={this.playBGM.bind(this)}></div>;
+    
     return (
       <div className="App">
+        {playThatBGM}
         {container}
       </div>
     );

@@ -44,6 +44,15 @@ img {
 
 /* general */
 
+.play-that-bgm {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
 .action-btn {  
   width: 360px;
   height: 180px;
