@@ -24,8 +24,10 @@ body {
 }
 
 .App {
-  width: 100vw;
+  width: 1080px;
   height: 100vh;
+  min-height: 1800px;
+  max-height: 2000px;
   position: relative;
   font-family: 'Gen Jyuu Gothic X';
   overflow: hidden;
