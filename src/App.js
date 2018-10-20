@@ -6,10 +6,6 @@ import Result from './components/Result';
 import AudioLib from './resources/audio-library'; 
 import './App.css';
 
-const shuffleArray = (array) => {
-  return array.sort(() => Math.random() < .5 ? 1 : -1);
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,18 +18,18 @@ class App extends Component {
       isBGMPlayed: false
     };
     this.switchView = this.switchView.bind(this);
+    this.setIllustrationOrder = this.setIllustrationOrder.bind(this);
     this.setPlayerAnswers = this.setPlayerAnswers.bind(this);
-    this.shuffleIllustrationOrder = this.shuffleIllustrationOrder.bind(this);
     this.playAudio = this.playAudio.bind(this);
     this.audioLib = new AudioLib();
   }
 
-  shuffleIllustrationOrder() {
-    let illustrationOrder = shuffleArray([1,2,3,4,5]);
+  setIllustrationOrder(illustrationOrder) {
     this.setState({
       illustrationOrder
     });
   }
+
 
   setPlayerAnswers(questionId, isPlayerAnswerCorrect) {
     let playerScore = this.state.playerScore;
@@ -87,7 +83,7 @@ class App extends Component {
     const viewContainerMapping = {
       'start': <Start view={this.state.view} switchView={this.switchView} />,
       'intro': <Intro view={this.state.view} switchView={this.switchView} />,
-      'quiz': <Quiz view={this.state.view} switchView={this.switchView} toggleQuestionSets={this.state.toggleQuestionSets} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers} illustrationOrder={this.state.illustrationOrder} shuffleIllustrationOrder={this.shuffleIllustrationOrder} playAudio={this.playAudio}/>,
+      'quiz': <Quiz view={this.state.view} switchView={this.switchView} toggleQuestionSets={this.state.toggleQuestionSets} playerScore={this.state.playerScore} setPlayerAnswers={this.setPlayerAnswers} illustrationOrder={this.state.illustrationOrder} setIllustrationOrder={this.setIllustrationOrder} playAudio={this.playAudio}/>,
       'result': <Result view={this.state.view} switchView={this.switchView} playerScore={this.state.playerScore} playerAnswers={this.state.playerAnswers} illustrationOrder={this.state.illustrationOrder} />,
     }
     let container = viewContainerMapping[this.state.view];

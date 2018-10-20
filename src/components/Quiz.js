@@ -70,7 +70,9 @@ class Quiz extends Component {
 
   componentWillMount() {
     quizQuestionsShuffled = shuffleArray(quizQuestions[this.props.toggleQuestionSets]);
-    this.props.shuffleIllustrationOrder();
+    this.props.setIllustrationOrder(quizQuestionsShuffled.map((value) => {
+      return value.illustrationIndex;
+    }));
 
     let answerOptions = shuffleArray(quizQuestionsShuffled[0].answers);
     let answer = answerOptions.findIndex(e => {
@@ -81,6 +83,7 @@ class Quiz extends Component {
       questionId: quizQuestionsShuffled[0].questionId,
       question: quizQuestionsShuffled[0].question,
       answerDescription: quizQuestionsShuffled[0].answerDescription,
+      illustrationIndex: quizQuestionsShuffled[0].illustrationIndex, 
       answerOptions,
       answer,   
     });
@@ -128,6 +131,7 @@ class Quiz extends Component {
         questionId: quizQuestionsShuffled[questionCount].questionId,
         question: quizQuestionsShuffled[questionCount].question,
         answerDescription: quizQuestionsShuffled[questionCount].answerDescription,
+        illustrationIndex: quizQuestionsShuffled[questionCount].illustrationIndex,
         answerOptions,
         answer,
         answerRevealed: false,
@@ -159,7 +163,7 @@ class Quiz extends Component {
           answerRevealed={this.state.answerRevealed}
           descriptionRevealed={this.state.descriptionRevealed}
           onAnswerSelected={this.handleAnswerSelected.bind(this)}
-          illustrationOrder={this.props.illustrationOrder}
+          illustrationIndex={this.state.illustrationIndex}
           setRef={this.setRef.bind(this)}
         />
         {nextStep}
@@ -203,7 +207,7 @@ function Question(props) {
           answer={props.answer}
           answerSelected={props.answerSelected}
           answerRevealed={props.answerRevealed}
-          illustrationOrder={props.illustrationOrder}
+          illustrationIndex={props.illustrationIndex}
         />
       </div>
     );
@@ -249,15 +253,14 @@ function Illustration(props) {
       playerAnswerStatus = "failure";
     }
   }
-  
-  let illustrationIndex = props.illustrationOrder[props.questionCount];
-  if (!illustrationIndex) {
+
+  if (!props.illustrationIndex) {
     return <div className={"illustration " + playerAnswerStatus}></div>;
   }
 
   return (
     <div className={"illustration " + playerAnswerStatus}>
-      {quizIllustrations[illustrationIndex][playerAnswerStatus]}
+      {quizIllustrations[props.illustrationIndex][playerAnswerStatus]}
     </div>
   );
 }
