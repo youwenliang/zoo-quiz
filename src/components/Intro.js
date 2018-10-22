@@ -48,8 +48,8 @@ class Intro extends Component {
     return (
       <div className="intro" ref={(el) => {this.intro = el}}>
         <div className="intro-container">
-          <div className="intro-title">遊戲規則</div>
-          <div className="intro-description">動動腦回答問題，完成搜集野生動物的調<span className="source-han">查</span>任務！</div>
+          <div className="intro-title">只要答對問題，就會成功<br/>捕捉到動物，加油吧！</div>
+          <div className="intro-description">圖片上出現的道具與題目本身<br/>不一定有關聯，聰明的探險家們<br/>可別誤會了喔！</div>
           <div className="action-btn intro-btn" onClick={() => this.props.switchView('quiz')} ref={(el) => {this.btn = el}}>開始！</div>
           <div className="svg svg-intro-avatar"><IntroAvatar /></div>
           <div className="svg svg-intro-dialog"><IntroDialog /></div>
