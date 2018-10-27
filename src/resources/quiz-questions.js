@@ -2,20 +2,20 @@ const quizQuestions = [
   [
     {
       "questionId": 1,
-      "question": "以下哪一雙鞋子比較適合野外調<span class='source-han'>查</span>？",
-      "answerDescription": "雨鞋可以防水、防滑、防蛇咬，適合進行野外調<span class='source-han'>查</span>。",
+      "question": "「鳥類腳環」會固定在鳥類的哪裡？",
+      "answerDescription": "綁在羽毛最少的腳部，很容易觀察，也不會影響鳥類飛行。",
       "answers": [
         {
           "isCorrect": true,
-          "content": "雨鞋"
+          "content": "腳上"
         },
         {
           "isCorrect": false,
-          "content": "涼鞋"
+          "content": "脖子上"
         },
         {
           "isCorrect": false,
-          "content": "拖鞋"
+          "content": "翅膀上"
         }
       ],
       "illustrationIndex": 2
@@ -82,108 +82,6 @@ const quizQuestions = [
     },
     {
       "questionId": 5,
-      "question": "用來觀察小青蛙的標記道具名字是？",
-      "answerDescription": "將螢光無毒染劑注入蛙類後腿皮下進行標記觀察。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "螢光標記"
-        },
-        {
-          "isCorrect": false,
-          "content": "腳環"
-        },
-        {
-          "isCorrect": false,
-          "content": "天線與\n發報器"
-        }
-      ],
-      "illustrationIndex": 3
-    }
-  ],
-  [
-    {
-      "questionId": 6,
-      "question": "「鳥類腳環」會固定在鳥類的哪裡？",
-      "answerDescription": "綁在羽毛最少的腳部，很容易觀察，也不會影響鳥類飛行。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "腳上"
-        },
-        {
-          "isCorrect": false,
-          "content": "脖子上"
-        },
-        {
-          "isCorrect": false,
-          "content": "翅膀上"
-        }
-      ],
-      "illustrationIndex": 2
-    },
-    {
-      "questionId": 7,
-      "question": "移動蛇類時比較不會傷害蛇類的道具是？",
-      "answerDescription": "蛇身的重心能攀在蛇勾上，對蛇類比較沒有傷害性。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "蛇勾"
-        },
-        {
-          "isCorrect": false,
-          "content": "蛇夾"
-        },
-        {
-          "isCorrect": false,
-          "content": "蛇板"
-        }
-      ],
-      "illustrationIndex": 4
-    },
-    {
-      "questionId": 8,
-      "question": "「天線與發報器」在野外調<span class='source-han'>查</span>時是用來？",
-      "answerDescription": "天線與發報器能用來搜尋追蹤之前野放的動物是否在附近。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "追蹤\n動物位置"
-        },
-        {
-          "isCorrect": false,
-          "content": "打電話"
-        },
-        {
-          "isCorrect": false,
-          "content": "測量風向"
-        }
-      ],
-      "illustrationIndex": 1
-    },
-    {
-      "questionId": 9,
-      "question": "哪個痕跡可以用來觀察與追蹤野生動物？",
-      "answerDescription": "熟悉生物知識，就能透過蛛絲馬跡推理出動物的相關資訊。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "兩者皆對"
-        },
-        {
-          "isCorrect": false,
-          "content": "腳印"
-        },
-        {
-          "isCorrect": false,
-          "content": "排遺（糞便）"
-        }
-      ],
-      "illustrationIndex": 5
-    },
-    {
-      "questionId": 10,
       "question": "輕巧可折疊，適合捕捉小動物的道具是？",
       "answerDescription": "常用於小型哺乳動物的調<span class='source-han'>查</span>道具，可折疊縮小體積。",
       "answers": [
@@ -205,29 +103,9 @@ const quizQuestions = [
   ],
   [
     {
-      "questionId": 11,
-      "question": "在野外遇到蛇類，應該怎麼做才對呢？",
-      "answerDescription": "遇到蛇應該：1.保持安靜 2.避免大動作 3.面向蛇慢慢退後離開。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "兩者皆對"
-        },
-        {
-          "isCorrect": false,
-          "content": "保持安靜"
-        },
-        {
-          "isCorrect": false,
-          "content": "慢慢\n後退離開"
-        }
-      ],
-      "illustrationIndex": 4
-    },
-    {
-      "questionId": 12,
+      "questionId": 6,
       "question": "用「鳥類腳環」標記鳥類的好處是？",
-      "answerDescription": "腳環會綁在羽毛最少的腳部，很容易觀察，也不影響鳥類飛行。",
+      "answerDescription": "腳環會綁在羽毛最少的腳部，既容易觀察也不影響鳥類飛行。",
       "answers": [
         {
           "isCorrect": true,
@@ -245,7 +123,47 @@ const quizQuestions = [
       "illustrationIndex": 2
     },
     {
-      "questionId": 13,
+      "questionId": 7,
+      "question": "「掉落式陷阱」抓到的動物多久之內要移除？",
+      "answerDescription": "24小時內要移除動物，可以避免動物受到傷害。",
+      "answers": [
+        {
+          "isCorrect": true,
+          "content": "24小時"
+        },
+        {
+          "isCorrect": false,
+          "content": "1小時"
+        },
+        {
+          "isCorrect": false,
+          "content": "1週"
+        }
+      ],
+      "illustrationIndex": 4
+    },
+    {
+      "questionId": 8,
+      "question": "用「自動照相機」來觀察動物有什麼優點？",
+      "answerDescription": "自動照相機方便觀察敏感且善於<span class='source-han'>躲</span>藏的動物。",
+      "answers": [
+        {
+          "isCorrect": true,
+          "content": "發現敏感\n的動物"
+        },
+        {
+          "isCorrect": false,
+          "content": "便宜"
+        },
+        {
+          "isCorrect": false,
+          "content": "方便攜帶"
+        }
+      ],
+      "illustrationIndex": 1
+    },
+    {
+      "questionId": 9,
       "question": "「豎琴網」是用來捕捉哪種動物的道具？",
       "answerDescription": "利用不會反射聲波的魚線網構造，捕捉蝙蝠進行研究。",
       "answers": [
@@ -265,41 +183,21 @@ const quizQuestions = [
       "illustrationIndex": 5
     },
     {
-      "questionId": 14,
-      "question": "能判斷野生動物有沒有在附近的道具是？",
-      "answerDescription": "天線與發報器能用來搜尋追蹤之前野放的動物是否在附近。",
+      "questionId": 10,
+      "question": "「薛曼氏捕鼠籠」可用來捕捉哪種動物？",
+      "answerDescription": "常用於小型哺乳動物的調<span class='source-han'>查</span>道具，可折疊縮小體積。",
       "answers": [
         {
           "isCorrect": true,
-          "content": "天線與\n發報器"
+          "content": "小型哺乳類"
         },
         {
           "isCorrect": false,
-          "content": "螢光標記"
+          "content": "鳥類"
         },
         {
           "isCorrect": false,
-          "content": "鳥類腳環"
-        }
-      ],
-      "illustrationIndex": 1
-    },
-    {
-      "questionId": 15,
-      "question": "蛙類的哪個部位適合做「螢光標記」？",
-      "answerDescription": "在後腿標記比較不會影響身體臟器，且面積較大容易觀察。",
-      "answers": [
-        {
-          "isCorrect": true,
-          "content": "後腿"
-        },
-        {
-          "isCorrect": false,
-          "content": "頭頂"
-        },
-        {
-          "isCorrect": false,
-          "content": "背部"
+          "content": "昆蟲"
         }
       ],
       "illustrationIndex": 3

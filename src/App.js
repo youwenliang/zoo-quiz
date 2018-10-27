@@ -30,7 +30,6 @@ class App extends Component {
     });
   }
 
-
   setPlayerAnswers(questionId, isPlayerAnswerCorrect) {
     let playerScore = this.state.playerScore;
     let playerAnswers = this.state.playerAnswers;
@@ -51,7 +50,7 @@ class App extends Component {
 
   resetPlayerAnswers() {
     this.setState({
-      toggleQuestionSets: (this.state.toggleQuestionSets+1)%3,
+      toggleQuestionSets: 1-this.state.toggleQuestionSets,
       playerScore: 0,
       playerAnswers: []
     });
