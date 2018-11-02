@@ -100,7 +100,7 @@ class Quiz extends Component {
   revealAnswer(index) {
     this.props.setPlayerAnswers(this.state.questionId, index === this.state.answer);
     this.setState({
-      answerSelected: index,
+      // answerSelected: index,
       answerRevealed: true
     });
     this.showDescription();
@@ -109,6 +109,9 @@ class Quiz extends Component {
 
   handleAnswerSelected(index) {
     if (!this.state.answerRevealed) {
+      this.setState({
+        answerSelected: index
+      });
       let illustration = this.questionNode.querySelectorAll('.illustration');
       let tlflipIllustration = new TimelineMax();
       tlflipIllustration
@@ -134,6 +137,7 @@ class Quiz extends Component {
         illustrationIndex: quizQuestionsShuffled[questionCount].illustrationIndex,
         answerOptions,
         answer,
+        answerSelected: -1,
         answerRevealed: false,
         descriptionRevealed: false
     });
@@ -215,7 +219,9 @@ function Question(props) {
 
 function AnswerOption(props) {
   function handleClick() {
-    props.onAnswerSelected(props.answerIndex);
+    if (props.answerSelected < 0) {
+      props.onAnswerSelected(props.answerIndex);
+    }
   }
 
   let answerStatus = '';
