@@ -203,6 +203,7 @@ function Question(props) {
             );
           })}
           <AnswerDescription
+            descriptionRevealed={props.descriptionRevealed}
             answerDescription={HtmlParser(props.answerDescription)}
           />
         </div>
@@ -243,11 +244,15 @@ function AnswerOption(props) {
 }
 
 function AnswerDescription(props) {
-  return (
-    <div className="answer-description">
-      {props.answerDescription}
-    </div>
-  )
+  if (props.descriptionRevealed) {
+    return (
+      <div className="answer-description">
+        {props.answerDescription}
+      </div>
+    )
+  } else {
+    return null;
+  }
 }
 
 function Illustration(props) {
